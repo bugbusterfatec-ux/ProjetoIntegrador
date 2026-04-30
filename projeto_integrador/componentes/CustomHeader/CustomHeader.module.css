@@ -1,0 +1,63 @@
+/* Variáveis de Cores */
+:root {
+    --cor-verde-agua: #348888;
+    --cor-verde-agua-claro: #d5f1ef;
+    --cor-laranja: #FA7F08;
+    --cor-escuro: #2d2d2d;
+    --cor-cinza: #707070;
+    --cor-branco: #ffffff;
+    --cor-vermelho: #F24405;
+    --cor-verde-petroleo: #348888; 
+    --cor-ciano-medio: #22BABB; 
+    --cor-ciano-claro:#9EF8EE; 
+    --cor-laranja-vibrante: lab(66.55% 40.45 72.21); 
+    --cor-laranja-avermelhado: #f24405;        
+    --bnt-laranja-vibrante-80: lab(66.55% 40.45 72.21 / 0.80); 
+}
+
+* {
+    font-family: 'Outfit' ,'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Cabeçalho */
+.cabecalho {
+    background: var(--cor-branco);
+}
+
+.logo {
+    max-width: 173px;
+}
+
+.logo-prefeitura {
+    max-width: 120px;
+}
+
+.rodape-topo .logo-prefeitura {
+    max-width: 100px;
+}
+
+.btn-buscar {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: var(--color-verde-petroleo);
+    color: var(--cor-branco);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
