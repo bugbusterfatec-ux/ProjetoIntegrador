@@ -1,0 +1,39 @@
+
+/* FILTRO */
+	.title {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 40px 20px 0;
+    margin-bottom: 0;
+    box-sizing: border-box;
+	}
+
+	.titleH1 {
+    color: #348888;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+    text-align: right;
+    padding: 0;
+	}
+
+    /* Container Cards Atividades (Passeio e Festa do Pijama) */
+.cards-atividades-container {
+    width: 90%;
+    margin: 25px auto 40px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards-atividades-wrapper {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
