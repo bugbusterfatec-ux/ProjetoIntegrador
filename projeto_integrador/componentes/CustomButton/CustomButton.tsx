@@ -1,3 +1,4 @@
+import style from "./CustomButton.module.css"
 
 interface CustomButtonProps {
   label: string
@@ -13,7 +14,7 @@ export const CustomButton = ({
     href,
     onClick,
     target = "_blank",
-    className = ""
+    className = "",
 }: CustomButtonProps) => {
     if (href) {
         return (

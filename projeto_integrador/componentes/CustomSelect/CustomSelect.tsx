@@ -1,6 +1,6 @@
 'use client'
 
-import style from "./CustomFiltroContainer.module.css"
+import style from "./CustomSelect.module.css"
 
 interface SelectOption {
   label: string
