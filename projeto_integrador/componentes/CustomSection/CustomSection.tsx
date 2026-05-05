@@ -3,6 +3,7 @@ import style from "./CustomSection.module.css"
 
 interface CustomSectionProps {
     children : React.ReactNode[];
+    className? : string;
 }
 
 export const CustomSection = (props : CustomSectionProps) => {

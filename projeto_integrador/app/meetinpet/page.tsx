@@ -99,10 +99,12 @@ export default function meetinpet() {
                     </CustomSection>
 
                     {/* <!-- Falta os cards e o button --> */}
-                    
+                    {/* <CustomSection className="card" >
+
+                    </CustomSection> */}
 
                     {/* <!-- Rodapé --> */}
-                    <CustomFooter />
+                    <CustomFooter /> 
         </>
     )
 }
