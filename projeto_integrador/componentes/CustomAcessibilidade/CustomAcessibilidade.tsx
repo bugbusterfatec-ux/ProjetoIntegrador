@@ -8,7 +8,7 @@ export const CustomAcessibilidade = () => {
         <div className={`${style["barra-acessibilidade"]} bg-ligth`} >
             <div className="container-fluid">
                 <div className="d-flex justify-content-start align-items-center gap-2 py-2">
-                    <button className={`${style["btn-acessibilidade"]} btn-contraste`} aria-label="Contraste">
+                    <button className={`${style["btn-acessibilidade"]} ${style["btn-contraste"]}`} aria-label="Contraste">
                         <span className="material-symbols-rounded">fiber_manual_record</span>
                     </button>
 
