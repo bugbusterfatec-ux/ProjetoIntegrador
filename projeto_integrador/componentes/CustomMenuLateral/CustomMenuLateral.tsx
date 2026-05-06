@@ -1,13 +1,21 @@
 
+type CustomMenuLateralProps = {
+    aberto: boolean
+    onCloseMenu: () => void
+}
 
-export const CustomMenuLateral = () => {
+export const CustomMenuLateral = ({ aberto, onCloseMenu }: CustomMenuLateralProps) => {
 
     return (
         <>
-        <div className="overlay-menu" id="overlayMenu"></div>
-        <aside className="menu-lateral" id="menuLateral" aria-hidden="true">
+        <div
+            className={`overlay-menu${aberto ? " ativo" : ""}`}
+            id="overlayMenu"
+            onClick={onCloseMenu}
+        ></div>
+        <aside className={`menu-lateral${aberto ? " aberto" : ""}`} id="menuLateral" aria-hidden={!aberto}>
             <header className="header-menu">
-                <button className="btn-close-menu" id="fecharMenu" aria-label="Fechar menu">&times;</button>
+                <button className="btn-close-menu" id="fecharMenu" aria-label="Fechar menu" onClick={onCloseMenu}>&times;</button>
             </header>
         <div className="conteudo-menu">
 			<section className="secao-menu">
