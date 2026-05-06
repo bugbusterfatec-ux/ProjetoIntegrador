@@ -217,7 +217,7 @@ export default function FiltroPage() {
                                 mensagem para diversao comecar.
                             </p>
                         </div>
-                        <button type="button" className={style.cardBotao}>PASSEAR</button>
+                        <button type="button" className={style.cardBotao} onClick={() => router.push('/sobrenos')}>PASSEAR</button>
                     </article>
 
                     <article className={style.cardAtividade}>
@@ -230,7 +230,7 @@ export default function FiltroPage() {
                                 se cadastre e um humano ira entrar em contato.
                             </p>
                         </div>
-                        <button type="button" className={style.cardBotao}>FESTA DO PIJAMA</button>
+                        <button type="button" className={style.cardBotao} onClick={() => router.push('/sobrenos')}>FESTA DO PIJAMA</button>
                     </article>
                 </section>
 
