@@ -7,9 +7,12 @@ interface CustomSectionProps {
 }
 
 export const CustomSection = (props : CustomSectionProps) => {
+    const sectionClassName = props.className
+        ? `${style["filtro-container"]} ${props.className}`
+        : style["filtro-container"]
 
     return (
-        <section className={style["filtro-container"]}>
+        <section className={sectionClassName}>
             {props.children}
         </section>
     )
