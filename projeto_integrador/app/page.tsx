@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from "react";
 import { CustomAcessibilidade } from "@/componentes/CustomAcessibilidade/CustomAcessibilidade";
 import { CustomAcessoRapido } from "@/componentes/CustomAcessoRapido/CustomAcessoRapido";
 import { CustomCarrossel } from "@/componentes/CustomCarrossel/CustomCarrossel";
@@ -10,6 +13,8 @@ import { CustomNoticias } from "@/componentes/CustomNoticias/CustomNoticias";
 
 
 export default function Home() {
+  const [menuAberto, setMenuAberto] = useState(false);
+
   return (
     <>
         {/* <!-- Icones Acessibilidade --> */}
@@ -19,10 +24,10 @@ export default function Home() {
         <CustomHeader />
 
         {/* <!-- Navegação --> */}
-        <CustomNavBar />
+        <CustomNavBar isMenuOpen={menuAberto} onOpenMenu={() => setMenuAberto(true)} />
 
         {/* <!-- Menu Lateral --> */}
-        <CustomMenuLateral />
+        <CustomMenuLateral aberto={menuAberto} onCloseMenu={() => setMenuAberto(false)} />
 
         {/* <!-- Carrossel Principal --> */}
         <CustomCarrossel />
