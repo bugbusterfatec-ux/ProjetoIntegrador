@@ -15,12 +15,15 @@ export const CustomMenuLateral = ({ aberto, onCloseMenu }: CustomMenuLateralProp
         ></div>
         <aside className={`menu-lateral${aberto ? " aberto" : ""}`} id="menuLateral" aria-hidden={!aberto}>
             <header className="header-menu">
+                <div className="badge-menu" aria-hidden="true">
+                    <span className="material-symbols-rounded">pets</span>
+                    <span>Menu</span>
+                </div>
                 <button className="btn-close-menu" id="fecharMenu" aria-label="Fechar menu" onClick={onCloseMenu}>&times;</button>
             </header>
         <div className="conteudo-menu">
 			<section className="secao-menu">
-				<h1 className="titulo-span-menu"><span className="material-symbols-rounded">pets</span></h1>
-				<h1 className="titulo-secao-menu">MENU</h1>
+				<h1 className="titulo-menu-principal"></h1>
 			</section>
 
             <section className="secao-menu">
@@ -36,7 +39,7 @@ export const CustomMenuLateral = ({ aberto, onCloseMenu }: CustomMenuLateralProp
 			<section className="secao-menu">
                 <h3 className="titulo-secao-menu">PETS</h3>
                 <ul className="lista-menu">
-                    <li><a href="./index_filtro.html" className="link-menu" target="_blank">Programa de Adoção Responsável</a></li>
+                    <li><a href="/filtro" className="link-menu">Programa de Adoção Responsável</a></li>
                     <li><a href="#" className="link-menu">Lar Transitório</a></li>
 					<li><a href="#" className="link-menu">Entenda como Funciona</a></li>
 					<li><a href="#" className="link-menu">Cadastro para Oferecer Lar Transitório</a></li>					
