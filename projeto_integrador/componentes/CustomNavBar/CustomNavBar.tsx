@@ -1,8 +1,8 @@
 'use client'
 
 type CustomNavBarProps = {
-    isMenuOpen: boolean
-    onOpenMenu: () => void
+    isMenuOpen?: boolean
+    onOpenMenu?: () => void
 }
 
 export const CustomNavBar = ({ isMenuOpen, onOpenMenu }: CustomNavBarProps) => {
