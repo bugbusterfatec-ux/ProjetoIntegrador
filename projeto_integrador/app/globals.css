@@ -204,8 +204,8 @@ a {
     position: fixed;
     top: 0;
     left: 0;
-    width: 326px;
-    max-width: 88vw;
+    width: 320px;
+    max-width: 85%;
     height: 100vh;
     background: #fbf9f7;
     box-shadow: 4px 0 30px rgba(0,0,0,0.1);
@@ -225,33 +225,31 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.9rem 1rem 0.3rem;
+    padding: 1.25rem 1.5rem 0.75rem;
 }
 
 .badge-menu {
     display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
-    padding: 0.38rem 0.88rem;
+    gap: 0.35rem;
+    padding: 0.35rem 0.9rem;
     border-radius: 999px;
     background: var(--cor-verde-agua);
     color: var(--cor-branco);
-    font-weight: 700;
-    font-size: 0.8rem;
-    box-shadow: 0 6px 14px rgba(52, 136, 136, 0.3);
-    transform: scale(1.03);
-    transform-origin: left center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
 }
 
 .badge-menu .material-symbols-rounded {
-    font-size: 0.95rem;
+    font-size: 1.4rem;
 }
 
 .btn-close-menu {
     border: none;
     background: transparent;
-    font-size: 1.6rem;
-    color: #7a7a7a;
+    font-size: 1.75rem;
+    color: var(--cor-cinza);
     cursor: pointer;
     line-height: 1;
     padding: 0;
@@ -263,19 +261,9 @@ a {
 }
 
 .conteudo-menu {
-    padding: 0 1.2rem 2rem;
+    padding: 0 1.5rem 2rem;
     flex: 1;
     overflow-y: auto;
-}
-
-.titulo-menu-principal {
-    text-align: center;
-    color: var(--cor-verde-agua);
-    font-size: 1.62rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    margin: 0.1rem 0 1rem;
-    line-height: 1;
 }
 
 .titulo-menu {
@@ -334,11 +322,6 @@ a {
     height: 420px;
 }
 
-.carrossel-principal .carousel,
-.carrossel-principal .carousel-inner {
-    height: 100%;
-}
-
 .carousel-item {
     height: 420px;
 }
@@ -381,17 +364,7 @@ a {
     border-radius: 50%;
     background: rgba(0,0,0,0.35);
     top: 50%;
-    bottom: auto;
     transform: translateY(-50%);
-    z-index: 2;
-}
-
-.carousel-control-prev {
-    left: 1rem;
-}
-
-.carousel-control-next {
-    right: 1rem;
 }
 
 /* Acesso Rápido */
