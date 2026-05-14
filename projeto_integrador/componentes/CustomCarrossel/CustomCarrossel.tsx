@@ -1,10 +1,41 @@
 
+'use client'
+
+import { useEffect, useRef } from "react"
 
 export const CustomCarrossel = () => {
+    const carouselRef = useRef<HTMLDivElement | null>(null)
+
+    useEffect(() => {
+        let instance: { dispose: () => void } | null = null
+
+        const initCarousel = async () => {
+            const { Carousel } = await import("bootstrap")
+
+            if (!carouselRef.current) {
+                return
+            }
+
+            instance = Carousel.getOrCreateInstance(carouselRef.current, {
+                interval: 5000,
+                wrap: true,
+                touch: true,
+                pause: "hover",
+            })
+
+            instance.cycle()
+        }
+
+        initCarousel()
+
+        return () => {
+            instance?.dispose()
+        }
+    }, [])
 
     return (
         <section className="carrossel-principal">
-        <div id="carrosselHero" className="carousel slide" data-bs-ride="carousel">
+        <div ref={carouselRef} id="carrosselHero" className="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
             <div className="carousel-inner">
                 <div className="carousel-item active">
                     <div className="slide slide-1">
