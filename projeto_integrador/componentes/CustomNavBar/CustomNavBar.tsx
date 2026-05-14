@@ -1,11 +1,6 @@
 'use client'
 
-type CustomNavBarProps = {
-    isMenuOpen: boolean
-    onOpenMenu: () => void
-}
-
-export const CustomNavBar = ({ isMenuOpen, onOpenMenu }: CustomNavBarProps) => {
+export const CustomNavBar = () => {
 
 
     return (
@@ -13,14 +8,7 @@ export const CustomNavBar = ({ isMenuOpen, onOpenMenu }: CustomNavBarProps) => {
         <div className="container-fluid">
             <div className="d-flex align-items-center justify-content-between py-2 gap-3">
                 <div className="d-flex align-items-center gap-0 flex-wrap">
-                    <button
-                        className="btn btn-menu"
-                        type="button"
-                        id="btnMenu"
-                        aria-expanded={isMenuOpen}
-                        aria-controls="menuLateral"
-                        onClick={onOpenMenu}
-                    >
+                    <button className="btn btn-menu" type="button" id="btnMenu" aria-expanded="false">
                         <span className="material-symbols-rounded">pets</span>
                         <span>Menu</span>
                     </button>
