@@ -1,7 +1,7 @@
 
 type CustomMenuLateralProps = {
-    aberto: boolean
-    onCloseMenu: () => void
+    aberto?: boolean
+    onCloseMenu?: () => void
 }
 
 export const CustomMenuLateral = ({ aberto, onCloseMenu }: CustomMenuLateralProps) => {

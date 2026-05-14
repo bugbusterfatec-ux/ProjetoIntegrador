@@ -8,8 +8,6 @@ import { CustomMenuLateral } from "@/componentes/CustomMenuLateral/CustomMenuLat
 import { CustomNavBar } from "@/componentes/CustomNavBar/CustomNavBar";
 import { CustomFooter } from "@/componentes/CustomFooter/CustomFooter";
 import { CustomTitle } from "@/componentes/CustomTitle/CustomTitle";
-import { CustomSection } from "@/componentes/CustomSection/CustomSection";
-import { CustomSelect } from "@/componentes/CustomFiltroContainer/CustomFiltroContainer";
 import styles from "./page.module.css";
 
 type Animal = {
