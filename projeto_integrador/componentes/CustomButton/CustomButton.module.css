@@ -1,0 +1,30 @@
+
+
+.verTodos {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  margin-top: 25px;
+  width: 60%; 
+  
+}
+
+.verTodosBtn {
+  
+  background-color: #FA7F08;
+  color: #fff;
+  font-size: 20px;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 20px;
+  width: 665px;
+  height: 45px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 8px 10px rgba(158, 248, 238,0.4);
+}
+
+.verTodosBtn:hover {
+  background-color: #e06e00;
+}
