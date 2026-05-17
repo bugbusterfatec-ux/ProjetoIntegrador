@@ -1,4 +1,6 @@
+import { CustomButton } from "../CustomButton/CustomButton";
 import style from "./CustomAnimalCard.module.css"
+import Link from "next/link"
 
 
 interface CustomAnimalCardProps {
@@ -32,7 +34,9 @@ export const CustomAnimalCard = ({
             <p>Sexo: {sexo}</p><span></span>
             <p>Vacinação: {vacinacao ? "Sim" : "Não"}</p><span></span>
 
-            <button className={style.cardButton}><a href="index_detalhes.html" target="_blank">Ver Mais</a></button> {/* Colocar style aqui */}
+            <Link href={`/meetinpet/${nome.toLowerCase()}`}>
+                <CustomButton label="Ver Mais" className={style.cardButton} target="_blank" /> {/* Arrumar o color, ta puxando da class la do comp button */}
+            </Link>
         </article>
     )
 }

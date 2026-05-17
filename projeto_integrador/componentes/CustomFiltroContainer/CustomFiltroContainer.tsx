@@ -1,6 +1,6 @@
 'use client'
 
-import style from "./CustomSelect.module.css"
+import style from "./CustomFiltroContainer.module.css"
 
 interface SelectOption {
   label: string
@@ -12,6 +12,7 @@ interface CustomSelectProps {
   placeholder?: string;
   options: SelectOption[]
   value?: string
+  defaultValue?: string
   onChange?: (value: string) => void
   className?: string
 }
@@ -33,12 +34,16 @@ export const CustomSelect = ({
       value={value}
       onChange={(e) => onChange?.(e.target.value)}
     >
-        <option value="" disabled={!!value}>{placeholder}</option>
+        {placeholder && (
+            <option value="" disabled>
+                {placeholder}
+            </option>
+        )}
 
         {options.map((opt) => (
-          <option key={opt.value} value={opt.value}>
+            <option key={opt.value} value={opt.value}>
             {opt.label}
-          </option>
+            </option>
         ))}
     </select>
   )

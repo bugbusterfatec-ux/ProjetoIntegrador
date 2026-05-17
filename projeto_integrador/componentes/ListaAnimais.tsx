@@ -1,7 +1,9 @@
 import { useState, useMemo } from "react"
 import { CustomAnimalCard } from "./CustomCard/CustomAnimalCard"
 import { CustomSelect } from "./CustomSelect/CustomSelect"
+import { CustomButton } from "@/componentes/CustomButton/CustomButton";
 import style from "./CustomCard/CustomAnimalCard.module.css"
+import styleBtn from "@/componentes/CustomButton/CustomButton.module.css"
 
 const listaInicial = [{
     nome: "Kairi",
@@ -9,8 +11,8 @@ const listaInicial = [{
     especie: "gato",
     sexo: "femea",
     porte: "pequeno",
-    idade: "adulto",
-    peso: "leve",
+    idade: "06 meses a 07 anos",
+    peso: "ate 5kg",
     raca: "Indef.",
     vacinacao: true
   },
@@ -20,8 +22,8 @@ const listaInicial = [{
     especie: "gato",
     sexo: "femea",
     porte: "pequeno",
-    idade: "adulto",
-    peso: "leve",
+    idade: "06 meses a 07 anos",
+    peso: "ate 5kg",
     raca: "Indef.",
     vacinacao: true
   },
@@ -31,8 +33,8 @@ const listaInicial = [{
     especie: "gato",
     sexo: "macho",
     porte: "medio",
-    idade: "adulto",
-    peso: "medio",
+    idade: "06 meses a 07 anos",
+    peso: "de 06 a 15kg",
     raca: "Indef.",
     vacinacao: true
   },
@@ -42,8 +44,8 @@ const listaInicial = [{
     especie: "gato",
     sexo: "macho",
     porte: "pequeno",
-    idade: "filhote",
-    peso: "leve",
+    idade: "menor que 03 meses",
+    peso: "ate 5kg",
     raca: "Indef.",
     vacinacao: true
   },
@@ -53,8 +55,8 @@ const listaInicial = [{
     especie: "cachorro",
     sexo: "femea",
     porte: "pequeno",
-    idade: "adulto",
-    peso: "leve",
+    idade: "06 meses a 07 anos",
+    peso: "ate 5kg",
     raca: "Vira-lata",
     vacinacao: true
   },
@@ -64,8 +66,8 @@ const listaInicial = [{
     especie: "cachorro",
     sexo: "macho",
     porte: "grande",
-    idade: "adulto",
-    peso: "pesado",
+    idade: "06 meses a 07 anos",
+    peso: "de 06 a 15kg",
     raca: "Vira-lata",
     vacinacao: true
   },
@@ -75,8 +77,8 @@ const listaInicial = [{
     especie: "cachorro",
     sexo: "femea",
     porte: "medio",
-    idade: "idoso",
-    peso: "medio",
+    idade: "acima de 07 anos",
+    peso: "de 06 a 15kg",
     raca: "Vira-lata",
     vacinacao: true
   },
@@ -86,8 +88,8 @@ const listaInicial = [{
     especie: "cachorro",
     sexo: "macho",
     porte: "grande",
-    idade: "adulto",
-    peso: "pesado",
+    idade: "06 meses a 07 anos",
+    peso: "de 06 a 15kg",
     raca: "Vira-lata",
     vacinacao: true
   }
@@ -180,25 +182,31 @@ export const ListaAnimais = () => {
                     ]}
                 />
 
-
-                <button  onClick={() =>
-                    setFiltros({
-                        especie: "",
-                        sexo: "",
-                        porte: "",
-                        idade: "",
-                        peso: ""
-                    })
-                }>
-                    Limpar
-                </button>
             </div>
 
             {/* LISTA */}
             <section className={style.cards}>
-                {animaisFiltrados.map((animal, index) => (
+                {animaisFiltrados.length === 0 ? (
+                    <p>Nenhum animal encontrado!</p>
+                ) : (
+                animaisFiltrados.map((animal, index) => (
                     <CustomAnimalCard key={index} {...animal} />
-                ))}
+                ))
+            )}
+            <div className={styleBtn.verTodos}>
+                <CustomButton
+                    label="Clique para exibir todos"
+                    className={styleBtn.verTodosBtn}
+                    onClick={() =>
+                        setFiltros({
+                            especie: "",
+                            sexo: "",
+                            porte: "",
+                            idade: "",
+                            peso: ""
+                        })
+                    } />
+            </div>
             </section>
         </>
     )
