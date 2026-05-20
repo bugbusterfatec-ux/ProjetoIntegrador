@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from "react";
 import { CustomHeader } from "@/componentes/CustomHeader/CustomHeader";
 import { CustomAcessibilidade } from "@/componentes/CustomAcessibilidade/CustomAcessibilidade";
 import { CustomMenuLateral } from "@/componentes/CustomMenuLateral/CustomMenuLateral";
@@ -15,8 +16,7 @@ import { ListaAnimais } from "@/componentes/ListaAnimais";
 
 
 export default function MeetinpetPage() {
-    
-    
+    const [menuAberto, setMenuAberto] = useState(false)
 
 
     return (
@@ -28,10 +28,10 @@ export default function MeetinpetPage() {
                     <CustomHeader extraLogo="\logo_meetin.png" className="logoMeetin" />
             
                     {/* <!-- Navegação --> */}
-                    <CustomNavBar />
-            
+                    <CustomNavBar isMenuOpen={menuAberto} onOpenMenu={() => setMenuAberto(true)} />
+
                     {/* <!-- Menu Lateral --> */}
-                    <CustomMenuLateral />
+                    <CustomMenuLateral aberto={menuAberto} onCloseMenu={() => setMenuAberto(false)} />
 
                     {/* <!-- Titulo --> */}
                     <CustomTitle title="ANIMAIS PARA ADOÇÃO"></CustomTitle>
