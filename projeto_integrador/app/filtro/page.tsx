@@ -15,6 +15,7 @@ export default function FiltroPage() {
     const [menuAberto, setMenuAberto] = useState(false)
     const [indicePergunta, setIndicePergunta] = useState(0)
     const [respostaSelecionada, setRespostaSelecionada] = useState("")
+    const [respostas, setRespostas] = useState<Record<number, string>>({})
     const [casaAtual, setCasaAtual] = useState(0)
     const [animalJogador, setAnimalJogador] = useState("dog")
     const [posicaoCachorro, setPosicaoCachorro] = useState({ x: 100, y: 200 })
@@ -156,6 +157,9 @@ export default function FiltroPage() {
 
         setMovendo(true)
 
+        const novasRespostas = { ...respostas, [indicePergunta]: respostaSelecionada }
+        setRespostas(novasRespostas)
+
         if (indicePergunta === 0) {
             setAnimalJogador(respostaSelecionada === "cat" ? "cat" : "dog")
             adicionarLog(respostaSelecionada === "cat" ? "Voce escolheu gato. O jogador agora e um gatinho." : "Voce escolheu cachorro.")
@@ -167,6 +171,13 @@ export default function FiltroPage() {
         if (indicePergunta < perguntas.length - 1 && novaCasa < totalCasas - 1) {
             setIndicePergunta((valorAtual) => valorAtual + 1)
         } else {
+            const chaves = ["especie", "porte", "ambiente", "exercicio", "experiencia", "personalidade"]
+            const resultado: Record<string, string> = {}
+            chaves.forEach((chave, i) => {
+                resultado[chave] = novasRespostas[i] ?? ""
+            })
+            localStorage.setItem("quizRespostas", JSON.stringify(resultado))
+
             setFimQuiz(true)
             setMostrarModal(true)
             gerarConfetes()
@@ -348,6 +359,14 @@ export default function FiltroPage() {
                 <div className={style.modalContent}>
                     <span className={style.modalEmoji}>🎉</span>
                     Parabens! Voce esta preparado para adotar um amigo!
+                    <button
+                        type="button"
+                        className={style.cardBotao}
+                        style={{ marginTop: "1rem" }}
+                        onClick={() => router.push("/meetinpet")}
+                    >
+                        Ver meus resultados
+                    </button>
                 </div>
                 <div className={style.confettiContainer}>
                     {confetes.map((item, index) => (
