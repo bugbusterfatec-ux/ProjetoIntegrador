@@ -105,7 +105,7 @@ export const ListaAnimais = () => {
         <>
             {/* RECOMENDAÇÕES DO QUIZ */}
             {quizRespostas && (
-                <div style={{ marginBottom: "2rem" }}>
+                <>
                     <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1rem" }}>
                         <h2 style={{ margin: 0 }}>Recomendado para você 🐾</h2>
                         <button
@@ -137,7 +137,7 @@ export const ListaAnimais = () => {
 
                     <hr style={{ margin: "2rem 0" }} />
                     <h2>Todos os animais</h2>
-                </div>
+                </>
             )}
 
             {/* FILTROS MANUAIS */}
