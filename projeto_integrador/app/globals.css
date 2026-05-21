@@ -742,6 +742,27 @@ div[vw-access-button] img {
     background-color: var(--cor-branco);
 }
 
+/* Filtros de Daltonismo - Aplicados ao body */
+body.filtro-protanopia {
+    filter: url('#protanopia-filter');
+}
+
+body.filtro-deuteranopia {
+    filter: url('#deuteranopia-filter');
+}
+
+body.filtro-tritanopia {
+    filter: url('#tritanopia-filter');
+}
+
+/* SVG Filters inline (invisível) */
+.daltonismo-svg-filters {
+    position: absolute;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
 /* Notícias */
 .noticias {
     background: var(--cor-branco);
