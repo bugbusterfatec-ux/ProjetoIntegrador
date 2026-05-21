@@ -3,37 +3,23 @@ import { useEffect } from 'react'
 
 export const VLibrasWidget = () => {
     useEffect(() => {
-        // Carrega o script do VLibras
+        if (document.getElementById('vlibras-plugin')) return
+
         const script = document.createElement('script')
         script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js'
         script.async = true
-        document.body.appendChild(script)
+        script.id = 'vlibras-plugin'
 
         script.onload = () => {
-            if (window.VLibras) {
-                new window.VLibras.Widget('https://vlibras.gov.br/app')
-            }
+            new (window as any).VLibras.Widget('https://vlibras.gov.br/app')
         }
 
-        return () => {
-            document.body.removeChild(script)
-        }
+        document.body.appendChild(script)
     }, [])
 
     return (
-        <div vw-access-button="true" className="enabled">
-            <div vw-plugin-wrapper="true">
-                <div className="vw-plugin-top-wrapper"></div>
-            </div>
-        </div>
+        <div dangerouslySetInnerHTML={{
+            __html: '<div vw class="enabled"><div vw-access-button class="active"></div><div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div></div>'
+        }} />
     )
-}
-
-// Type declaration for window.VLibras
-declare global {
-    interface Window {
-        VLibras: {
-            Widget: new (url: string) => void
-        }
-    }
 }
