@@ -2,6 +2,7 @@
 //import { Geist, Geist_Mono } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./globals.css";
+import { VLibrasWidget } from "@/componentes/VLibrasWidget/VLibrasWidget";
 
 type Props = {
   children: React.ReactNode
@@ -18,25 +19,7 @@ export default function RootLayout({ children }: Props) {
       </head>
       <body>
         {children}
-
-        {/* VLibras Widget */}
-        <div vw-access-button className="enabled">
-          <div vw-plugin-wrapper>
-            <div className="vw-plugin-top-wrapper"></div>
-          </div>
-        </div>
-        <script src="https://vlibras.gov.br/app/vlibras-plugin.js" async></script>
-        <script dangerouslySetInnerHTML={{
-          __html: `
-            if (typeof window !== 'undefined') {
-              window.addEventListener('load', function() {
-                if (window.VLibras) {
-                  new window.VLibras.Widget('https://vlibras.gov.br/app');
-                }
-              });
-            }
-          `
-        }}></script>
+        <VLibrasWidget />
       </body>
     </html>
   )
