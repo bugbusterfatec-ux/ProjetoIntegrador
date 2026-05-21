@@ -61,80 +61,96 @@ export default function DetalhesPage({ params }: { params: Promise<{ nome: strin
             <main className={styles.detailsMain}>
                 <section className={styles.detailsContainer}>
 
-                    {/* Galeria de Imagens */}
-                    <article className={styles.galeria}>
-                        <div className={styles.miniaturas}>
-                            {imagensDisponiveis.slice(0, 4).map((img, index) => (
-                                <img 
-                                    key={index}
-                                    src={img} 
-                                    alt={`${index + 1}`} 
-                                    className={`${styles.thumb} ${imagemPrincipalIndex === index ? styles.ativa : ""}`}
-                                    onClick={() => handleThumbnailClick(index)}
-                                />
-                            ))}
-                        </div>
+                    {/* Hero Section - Gallery + Info */}
+                    <div className={styles.heroSection}>
+                        {/* Galeria de Imagens */}
+                        <article className={styles.galeria}>
+                            <div className={styles.imagemPrincipal}>
+                                <img src={imagensDisponiveis[imagemPrincipalIndex]} alt={`${animalNome} - foto principal`} />
+                            </div>
 
-                        <div className={styles.imagemPrincipal}>
-                            <img id="img-principal" src={imagensDisponiveis[imagemPrincipalIndex]} alt="Imagem principal" />
-                        </div>
-                    </article>
+                            <div className={styles.miniaturas}>
+                                {imagensDisponiveis.slice(0, 4).map((img, index) => (
+                                    <img
+                                        key={index}
+                                        src={img}
+                                        alt={`${animalNome} - foto ${index + 1}`}
+                                        className={`${styles.thumb} ${imagemPrincipalIndex === index ? styles.ativa : ""}`}
+                                        onClick={() => handleThumbnailClick(index)}
+                                    />
+                                ))}
+                            </div>
+                        </article>
 
-                    {/* Info do Animal */}
-                    <article className={styles.info}>
-                        <h2>Olá, eu sou {animalNome}</h2>
-                    </article>
+                        {/* Info do Animal */}
+                        <article className={styles.info}>
+                            <h2>Olá, eu sou {animalNome}</h2>
+
+                            <div className={styles.quickStats}>
+                                <span className={styles.statBadge}>🐕 Cão</span>
+                                <span className={styles.statBadge}>♀ Fêmea</span>
+                                <span className={styles.statBadge}>📏 Pequeno</span>
+                                <span className={styles.statBadge}>🎂 2 anos</span>
+                            </div>
+
+                            <p className={styles.description}>
+                                Uma companheira doce e carinhosa, perfeita para famílias que buscam um pet afetuoso e brincalhão.
+                                Adora passeios e está pronta para dar muito amor ao seu novo lar.
+                            </p>
+                        </article>
+                    </div>
 
                     {/* Cards de Detalhes */}
                     <section className={styles.detailsCards}>
                         <article className={styles.cardDetails}>
                             <div className={styles.borderDetails}>
-                                <h3>PERFIL SOCIAL</h3>
+                                <h3>Perfil Social</h3>
                                 <p>
-                                    Espécie: Cão<br />
-                                    Sexo: Fêmea<br />
-                                    Porte: Pequeno<br />
-                                    Idade: 2 anos<br />
-                                    Peso: 6 kg
+                                    <strong>Espécie:</strong> Cão<br />
+                                    <strong>Sexo:</strong> Fêmea<br />
+                                    <strong>Porte:</strong> Pequeno<br />
+                                    <strong>Idade:</strong> 2 anos<br />
+                                    <strong>Peso:</strong> 6 kg
                                 </p>
                             </div>
                         </article>
 
                         <article className={styles.cardDetailsCentral}>
                             <div className={styles.borderDetailsCentral}>
-                                <h3>PRONTUÁRIO</h3>
+                                <h3>Prontuário</h3>
                                 <p>
-                                    Vacinado<br />
-                                    Vermifugado<br />
-                                    Castrada<br />
-                                    Microchipada<br />
-                                    Não alérgico<br />
-                                    Saudável
+                                    ✓ Vacinado<br />
+                                    ✓ Vermifugado<br />
+                                    ✓ Castrada<br />
+                                    ✓ Microchipada<br />
+                                    ✓ Não alérgico<br />
+                                    ✓ Saudável
                                 </p>
                             </div>
                         </article>
 
                         <article className={styles.cardDetails}>
                             <div className={styles.borderDetails}>
-                                <h3>ADESTRAMENTO</h3>
+                                <h3>Adestramento</h3>
                                 <p>
-                                    Tempo: 3 meses<br />
-                                    Truques:<br />
-                                    - Senta<br />
-                                    - Deita<br />
-                                    - Dá a patinha<br />
+                                    <strong>Tempo:</strong> 3 meses<br /><br />
+                                    <strong>Truques:</strong><br />
+                                    • Senta<br />
+                                    • Deita<br />
+                                    • Dá a patinha<br />
                                     <br />
-                                    <small>Profissional: José Duarte</small>
+                                    <small style={{ color: "#707070" }}>Profissional: José Duarte</small>
                                 </p>
                             </div>
                         </article>
-
-                        <div className={styles.cardBotoes}>
-                            <button onClick={() => router.push('/sobrenos')}>PASSEAR</button>
-                            <button className={styles.btnAdotar}>ADOTAR</button>
-                            <button onClick={() => router.push('/sobrenos')}>FESTA DO PIJAMA</button>
-                        </div>
                     </section>
+
+                    {/* Botões de Ação */}
+                    <div className={styles.cardBotoes}>
+                        <button onClick={() => router.push('/sobrenos')}>Passear</button>
+                        <button className={styles.btnAdotar}>Adotar</button>
+                        <button onClick={() => router.push('/sobrenos')}>Festa do Pijama</button>
+                    </div>
 
                 </section>
             </main>
