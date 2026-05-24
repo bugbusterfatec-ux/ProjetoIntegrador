@@ -42,7 +42,8 @@ export default function DetalhesPage({ params }: { params: Promise<{ nome: strin
         );
     }
 
-    const fotos = animal.fotos.length > 0 ? animal.fotos : [animal.imagem];
+    const fotosUrls = animal.fotos.length > 0 ? animal.fotos.map(f => f.urlFoto) : [animal.imagem];
+    const adestramentoAtual = animal.adestramento[0];
 
     return (
         <>
@@ -65,12 +66,12 @@ export default function DetalhesPage({ params }: { params: Promise<{ nome: strin
                     <div className={styles.heroSection}>
                         <article className={styles.galeria}>
                             <div className={styles.imagemPrincipal}>
-                                <img src={fotos[imagemPrincipalIndex]} alt={`${animal.nome} - foto principal`} />
+                                <img src={fotosUrls[imagemPrincipalIndex]} alt={`${animal.nome} - foto principal`} />
                             </div>
 
-                            {fotos.length > 1 && (
+                            {fotosUrls.length > 1 && (
                                 <div className={styles.miniaturas}>
-                                    {fotos.slice(0, 4).map((img, index) => (
+                                    {fotosUrls.slice(0, 4).map((img, index) => (
                                         <img
                                             key={index}
                                             src={img}
@@ -129,19 +130,19 @@ export default function DetalhesPage({ params }: { params: Promise<{ nome: strin
                             <div className={styles.borderDetails}>
                                 <h3>Adestramento</h3>
                                 <p>
-                                    {animal.tempoAdestramento ? (
-                                        <><strong>Tempo:</strong> {animal.tempoAdestramento}<br /><br /></>
+                                    {adestramentoAtual?.tempoAdestramento ? (
+                                        <><strong>Tempo:</strong> {adestramentoAtual.tempoAdestramento}<br /><br /></>
                                     ) : null}
-                                    {animal.truques.length > 0 ? (
+                                    {(adestramentoAtual?.truques ?? []).length > 0 ? (
                                         <>
                                             <strong>Truques:</strong><br />
-                                            {animal.truques.map((t, i) => <span key={i}>• {t}<br /></span>)}
+                                            {(adestramentoAtual?.truques ?? []).map((t, i) => <span key={i}>• {t}<br /></span>)}
                                         </>
                                     ) : (
                                         <span>Ainda aprendendo! 🐾</span>
                                     )}
-                                    {animal.adestrador ? (
-                                        <><br /><small style={{ color: "#707070" }}>Profissional: {animal.adestrador}</small></>
+                                    {adestramentoAtual?.adestrador ? (
+                                        <><br /><small style={{ color: "#707070" }}>Profissional: {adestramentoAtual.adestrador.nomeUsuario}</small></>
                                     ) : null}
                                 </p>
                             </div>
@@ -150,7 +151,7 @@ export default function DetalhesPage({ params }: { params: Promise<{ nome: strin
 
                     <div className={styles.cardBotoes}>
                         <button onClick={() => router.push('/sobrenos')}>Passear</button>
-                        <button className={styles.btnAdotar}>Adotar</button>
+                        <button>Adotar</button>
                         <button onClick={() => router.push('/sobrenos')}>Festa do Pijama</button>
                     </div>
 
