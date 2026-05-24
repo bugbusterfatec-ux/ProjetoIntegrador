@@ -7,7 +7,6 @@ import { CustomAcessibilidade } from "@/componentes/CustomAcessibilidade/CustomA
 import { CustomMenuLateral } from "@/componentes/CustomMenuLateral/CustomMenuLateral";
 import { CustomNavBar } from "@/componentes/CustomNavBar/CustomNavBar";
 import { CustomFooter } from "@/componentes/CustomFooter/CustomFooter";
-import { CustomFiltroDaltonismo } from "@/componentes/CustomFiltroDaltonismo/CustomFiltroDaltonismo";
 import style from "./filtro.module.css"
 
 export default function FiltroPage() {
@@ -201,9 +200,6 @@ export default function FiltroPage() {
 
             {/* <!-- Menu Lateral --> */}
             <CustomMenuLateral aberto={menuAberto} onCloseMenu={() => setMenuAberto(false)} />
-
-            {/* <!-- Filtro de Acessibilidade --> */}
-            <CustomFiltroDaltonismo />
 
             <main className={style.paginaFiltro}>
                 <section className={style.cabecalhoTitulo}>

@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./globals.css";
 import { VLibrasWidget } from "@/componentes/VLibrasWidget/VLibrasWidget";
+import { CustomFiltroDaltonismo } from "@/componentes/CustomFiltroDaltonismo/CustomFiltroDaltonismo";
 
 type Props = {
   children: React.ReactNode
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: Props) {
       <body>
         {children}
         <VLibrasWidget />
+        <CustomFiltroDaltonismo />
       </body>
     </html>
   )

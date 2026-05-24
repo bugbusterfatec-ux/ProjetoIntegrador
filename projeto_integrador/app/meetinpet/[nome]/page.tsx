@@ -6,7 +6,6 @@ import { CustomAcessibilidade } from "@/componentes/CustomAcessibilidade/CustomA
 import { CustomMenuLateral } from "@/componentes/CustomMenuLateral/CustomMenuLateral";
 import { CustomNavBar } from "@/componentes/CustomNavBar/CustomNavBar";
 import { CustomFooter } from "@/componentes/CustomFooter/CustomFooter";
-import { CustomFiltroDaltonismo } from "@/componentes/CustomFiltroDaltonismo/CustomFiltroDaltonismo";
 import styles from "./page.module.css";
 import animais from "@/data/animais.json";
 
@@ -31,7 +30,6 @@ export default function DetalhesPage({ params }: { params: Promise<{ nome: strin
                 <CustomHeader />
                 <CustomNavBar isMenuOpen={menuAberto} onOpenMenu={() => setMenuAberto(true)} />
                 <CustomMenuLateral aberto={menuAberto} onCloseMenu={() => setMenuAberto(false)} />
-                <CustomFiltroDaltonismo />
                 <main style={{ padding: "4rem 2rem", textAlign: "center" }}>
                     <h1>Animal não encontrado</h1>
                     <p>Não encontramos nenhum animal com esse nome.</p>
@@ -51,8 +49,6 @@ export default function DetalhesPage({ params }: { params: Promise<{ nome: strin
             <CustomHeader />
             <CustomNavBar isMenuOpen={menuAberto} onOpenMenu={() => setMenuAberto(true)} />
             <CustomMenuLateral aberto={menuAberto} onCloseMenu={() => setMenuAberto(false)} />
-            <CustomFiltroDaltonismo />
-
             <section className={styles.titleDetails}>
                 <button onClick={() => router.back()} className={styles.backButton}>
                     &lt;&lt; Voltar
