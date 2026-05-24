@@ -68,8 +68,19 @@ export const VLibrasWidget = () => {
     return (
         <div
             className="vlibras-wrapper"
+            style={{
+                position: 'fixed',
+                right: '10px',
+                top: 'calc(50% - 35px)',
+                transform: 'translateY(-50%)',
+                zIndex: 1001,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 0,
+                pointerEvents: 'none',
+            }}
             dangerouslySetInnerHTML={{
-                __html: '<div vw class="enabled"><div vw-access-button class="active"></div><div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div></div>'
+                __html: '<div vw class="enabled" style="pointer-events: auto; position: relative; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;"><div vw-access-button class="active" style="pointer-events: auto; position: relative; width: 50px; height: 50px; border-radius: 8px; background-color: #0066CC; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1001; box-shadow: -2px 0 6px rgba(0, 0, 0, 0.15);"></div><div vw-plugin-wrapper style="pointer-events: auto;"><div class="vw-plugin-top-wrapper"></div></div></div>'
             }}
         />
     )
