@@ -21,19 +21,19 @@ export const VLibrasWidget = () => {
                     // Remove conteúdo anterior para evitar duplicatas
                     container.innerHTML = ''
 
-                    // Cria a estrutura do VLibras
+                    // Cria a estrutura do VLibras com atributos data-* primeiro
                     const enabledDiv = document.createElement('div')
-                    enabledDiv.setAttribute('vw', '')
+                    enabledDiv.setAttribute('data-vw', 'true')
                     enabledDiv.className = 'enabled'
                     enabledDiv.style.cssText = 'position: relative; width: 50px; height: 50px; pointer-events: auto;'
 
                     const buttonDiv = document.createElement('div')
-                    buttonDiv.setAttribute('vw-access-button', '')
+                    buttonDiv.setAttribute('data-vw-access-button', 'true')
                     buttonDiv.className = 'active'
                     buttonDiv.style.cssText = 'position: relative; width: 50px; height: 50px; pointer-events: auto; z-index: 1001;'
 
                     const pluginDiv = document.createElement('div')
-                    pluginDiv.setAttribute('vw-plugin-wrapper', '')
+                    pluginDiv.setAttribute('data-vw-plugin-wrapper', 'true')
                     pluginDiv.style.cssText = 'pointer-events: auto;'
 
                     const topWrapper = document.createElement('div')
@@ -43,6 +43,28 @@ export const VLibrasWidget = () => {
                     enabledDiv.appendChild(buttonDiv)
                     enabledDiv.appendChild(pluginDiv)
                     container.appendChild(enabledDiv)
+
+                    // Aguarda um pouco e depois adiciona os atributos customizados que o VLibras espera
+                    setTimeout(() => {
+                        const allDivs = container.querySelectorAll('div')
+                        allDivs.forEach(div => {
+                            if (div.hasAttribute('data-vw')) {
+                                div.removeAttribute('data-vw')
+                                div.setAttribute('vw', '')
+                                console.log('[VLibras] Atributo vw adicionado')
+                            }
+                            if (div.hasAttribute('data-vw-access-button')) {
+                                div.removeAttribute('data-vw-access-button')
+                                div.setAttribute('vw-access-button', '')
+                                console.log('[VLibras] Atributo vw-access-button adicionado')
+                            }
+                            if (div.hasAttribute('data-vw-plugin-wrapper')) {
+                                div.removeAttribute('data-vw-plugin-wrapper')
+                                div.setAttribute('vw-plugin-wrapper', '')
+                                console.log('[VLibras] Atributo vw-plugin-wrapper adicionado')
+                            }
+                        })
+                    }, 100)
 
                     // Inicializa o widget
                     new (window as any).VLibras.Widget('https://vlibras.gov.br/app')
