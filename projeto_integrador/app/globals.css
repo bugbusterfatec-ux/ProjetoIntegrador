@@ -505,17 +505,64 @@ a {
     color: var(--cor-branco);
 }
 
-/* VLibras - apenas z-index para ficar acima de outros elementos */
+/*
+ * Grupo de acessibilidade: VLibras (topo) + Daltonismo (baixo)
+ * Grupo total = 50px + 16px gap + 50px = 116px, centrado em 50% da tela.
+ * VLibras top: calc(50% - 58px)
+ * Daltonismo top: calc(50% + 8px)   [= -58px + 50px + 16px]
+ */
+
+/* VLibras - container posicionado no grupo, sem tamanho fixo para o widget poder expandir */
 div[vw] {
-    z-index: 1001;
+    position: fixed !important;
+    right: 0px !important;
+    top: calc(50% - 63px) !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
+    margin: 0 !important;
+    z-index: 9999 !important;
+    min-width: 50px !important;
+    min-height: 50px !important;
 }
 
-/* Filtro de Acessibilidade - Wrapper */
+/* Botão de acesso: 50×50px padrão, permite expansão nativa do VLibras */
+div[vw] div[vw-access-button] {
+    width: 50px;
+    height: 50px !important;
+    border-radius: 8px !important;
+    right: 0 !important;
+    overflow: hidden !important;
+    transition: width 0.3s ease !important;
+}
+
+/* Hover: expande para a esquerda revelando o banner — VLibras gerencia o layout interno */
+div[vw] div[vw-access-button]:hover {
+    width: 255px !important;
+    border-radius: 8px !important;
+}
+
+/* Imagens do botão: altura fixa, largura livre para o VLibras posicionar */
+div[vw] div[vw-access-button] img {
+    max-height: 50px !important;
+    height: 50px !important;
+    width: auto !important;
+    max-width: none !important;
+}
+
+/* Painel do widget: ancora à direita para expandir para a esquerda */
+div[vw] div[vw-plugin-wrapper] {
+    right: 0 !important;
+    left: auto !important;
+    float: right !important;
+}
+
+/* Filtro de Acessibilidade - Wrapper (abaixo do VLibras, 16px de gap) */
 .filtro-wrapper {
     position: fixed;
     right: 10px;
-    top: calc(50% + 35px);
-    transform: translateY(-50%);
+    top: calc(50% + 8px);
+    transform: none;
     z-index: 1000;
     display: flex;
     flex-direction: column;

@@ -1,28 +1,44 @@
 'use client'
+import Script from 'next/script'
 import { useEffect } from 'react'
 
 export const VLibrasWidget = () => {
     useEffect(() => {
-        if (document.getElementById('vlibras-script')) return
+        if (document.querySelector('[vw]')) return
 
-        const temp = document.createElement('div')
-        temp.innerHTML =
-            '<div vw class="enabled">' +
-            '<div vw-access-button class="active"></div>' +
-            '<div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>' +
-            '</div>'
-        document.body.appendChild(temp.firstElementChild as Element)
+        const container = document.createElement('div')
+        container.setAttribute('vw', '')
+        container.classList.add('enabled')
 
-        const script = document.createElement('script')
-        script.id = 'vlibras-script'
-        script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js'
-        script.onload = () => {
-            if ((window as any).VLibras) {
-                new (window as any).VLibras.Widget('https://vlibras.gov.br/app')
-            }
-        }
-        document.body.appendChild(script)
+        const btn = document.createElement('div')
+        btn.setAttribute('vw-access-button', '')
+        btn.classList.add('active')
+
+        const wrap = document.createElement('div')
+        wrap.setAttribute('vw-plugin-wrapper', '')
+
+        const inner = document.createElement('div')
+        inner.className = 'vw-plugin-top-wrapper'
+
+        wrap.appendChild(inner)
+        container.appendChild(btn)
+        container.appendChild(wrap)
+        document.body.appendChild(container)
     }, [])
 
-    return null
+    return (
+        <Script
+            src="https://vlibras.gov.br/app/vlibras-plugin.js"
+            strategy="afterInteractive"
+            onLoad={() => {
+                new (window as any).VLibras.Widget('https://vlibras.gov.br/app')
+                // Em SPAs o window.onload já disparou antes do script carregar.
+                // O VLibras depende desse evento para inicializar o widget,
+                // então precisamos dispará-lo manualmente.
+                if (typeof window.onload === 'function') {
+                    window.onload(new Event('load'))
+                }
+            }}
+        />
+    )
 }
