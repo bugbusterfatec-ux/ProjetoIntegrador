@@ -3,41 +3,25 @@ import { useEffect } from 'react'
 
 export const VLibrasWidget = () => {
     useEffect(() => {
-        // Cria toda a estrutura via JS puro (React remove atributos customizados como vw, vw-access-button)
-        const container = document.createElement('div')
-        container.setAttribute('vw', '')
-        container.className = 'enabled'
+        if (document.getElementById('vlibras-script')) return
 
-        const accessButton = document.createElement('div')
-        accessButton.setAttribute('vw-access-button', '')
-        accessButton.className = 'active'
+        const temp = document.createElement('div')
+        temp.innerHTML =
+            '<div vw class="enabled">' +
+            '<div vw-access-button class="active"></div>' +
+            '<div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>' +
+            '</div>'
+        document.body.appendChild(temp.firstElementChild as Element)
 
-        const pluginWrapper = document.createElement('div')
-        pluginWrapper.setAttribute('vw-plugin-wrapper', '')
-
-        const topWrapper = document.createElement('div')
-        topWrapper.className = 'vw-plugin-top-wrapper'
-
-        pluginWrapper.appendChild(topWrapper)
-        container.appendChild(accessButton)
-        container.appendChild(pluginWrapper)
-        document.body.appendChild(container)
-
-        // Carrega o script e inicializa após inserir a estrutura
         const script = document.createElement('script')
+        script.id = 'vlibras-script'
         script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js'
-        script.async = true
         script.onload = () => {
             if ((window as any).VLibras) {
                 new (window as any).VLibras.Widget('https://vlibras.gov.br/app')
             }
         }
         document.body.appendChild(script)
-
-        return () => {
-            container.remove()
-            script.remove()
-        }
     }, [])
 
     return null
