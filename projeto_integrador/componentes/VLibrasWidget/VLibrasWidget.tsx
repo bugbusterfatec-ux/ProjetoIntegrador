@@ -1,8 +1,13 @@
 'use client'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 export const VLibrasWidget = () => {
+    const containerRef = useRef<HTMLDivElement>(null)
+
     useEffect(() => {
+        const container = containerRef.current
+        if (!container) return
+
         let attempts = 0
         const maxAttempts = 5
 
@@ -13,6 +18,33 @@ export const VLibrasWidget = () => {
             if (typeof (window as any).VLibras !== 'undefined') {
                 console.log('[VLibras] Widget criando...')
                 try {
+                    // Remove conteúdo anterior para evitar duplicatas
+                    container.innerHTML = ''
+
+                    // Cria a estrutura do VLibras
+                    const enabledDiv = document.createElement('div')
+                    enabledDiv.setAttribute('vw', '')
+                    enabledDiv.className = 'enabled'
+                    enabledDiv.style.cssText = 'position: relative; width: 50px; height: 50px; pointer-events: auto;'
+
+                    const buttonDiv = document.createElement('div')
+                    buttonDiv.setAttribute('vw-access-button', '')
+                    buttonDiv.className = 'active'
+                    buttonDiv.style.cssText = 'position: relative; width: 50px; height: 50px; pointer-events: auto; z-index: 1001;'
+
+                    const pluginDiv = document.createElement('div')
+                    pluginDiv.setAttribute('vw-plugin-wrapper', '')
+                    pluginDiv.style.cssText = 'pointer-events: auto;'
+
+                    const topWrapper = document.createElement('div')
+                    topWrapper.className = 'vw-plugin-top-wrapper'
+
+                    pluginDiv.appendChild(topWrapper)
+                    enabledDiv.appendChild(buttonDiv)
+                    enabledDiv.appendChild(pluginDiv)
+                    container.appendChild(enabledDiv)
+
+                    // Inicializa o widget
                     new (window as any).VLibras.Widget('https://vlibras.gov.br/app')
                     console.log('[VLibras] ✓ Widget inicializado com sucesso!')
                     return true
@@ -53,7 +85,6 @@ export const VLibrasWidget = () => {
 
         script.onerror = () => {
             console.error('[VLibras] ✗ Erro ao carregar script de https://vlibras.gov.br/app/vlibras-plugin.js')
-            // Tenta carregar de um CDN alternativo
             console.log('[VLibras] Tentando CDN alternativo...')
             script.src = 'https://cdn.jsdelivr.net/npm/vlibras-plugin/dist/vlibras-plugin.js'
             script.onerror = () => {
@@ -67,6 +98,7 @@ export const VLibrasWidget = () => {
 
     return (
         <div
+            ref={containerRef}
             className="vlibras-wrapper"
             style={{
                 position: 'fixed',
@@ -78,9 +110,6 @@ export const VLibrasWidget = () => {
                 alignItems: 'center',
                 gap: 0,
                 pointerEvents: 'none',
-            }}
-            dangerouslySetInnerHTML={{
-                __html: '<div vw class="enabled" style="pointer-events: auto; position: relative; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;"><div vw-access-button class="active" style="pointer-events: auto; position: relative; width: 50px; height: 50px; border-radius: 8px; background-color: #0066CC; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1001; box-shadow: -2px 0 6px rgba(0, 0, 0, 0.15);"></div><div vw-plugin-wrapper style="pointer-events: auto;"><div class="vw-plugin-top-wrapper"></div></div></div>'
             }}
         />
     )
