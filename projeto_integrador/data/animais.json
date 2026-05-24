@@ -109,10 +109,10 @@
     "alergico": false,
     "fotos": [
       { "idFoto": 6, "urlFoto": "/organela.jpg" },
-      { "idFoto": 7, "urlFoto": "/organela.jpg" },
-      { "idFoto": 8, "urlFoto": "/organela.jpg" },
-      { "idFoto": 9, "urlFoto": "/organela.jpg" },
-      { "idFoto": 10, "urlFoto": "/organela.jpg" }
+      { "idFoto": 7, "urlFoto": "/organela5.png" },
+      { "idFoto": 8, "urlFoto": "/organela3.png" },
+      { "idFoto": 9, "urlFoto": "/organela4.png" },
+      { "idFoto": 10, "urlFoto": "/organela2.png" }
     ],
     "vacinas": [
       {
@@ -193,10 +193,10 @@
     "alergico": false,
     "fotos": [
       { "idFoto": 11, "urlFoto": "/sunday.jpg" },
-      { "idFoto": 12, "urlFoto": "/sunday.jpg" },
-      { "idFoto": 13, "urlFoto": "/sunday.jpg" },
-      { "idFoto": 14, "urlFoto": "/sunday.jpg" },
-      { "idFoto": 15, "urlFoto": "/sunday.jpg" }
+      { "idFoto": 12, "urlFoto": "/sunday2.png" },
+      { "idFoto": 13, "urlFoto": "/sunday3.png" },
+      { "idFoto": 14, "urlFoto": "/sunday4.png" },
+      { "idFoto": 15, "urlFoto": "/sunday5.png" }
     ],
     "vacinas": [
       {
@@ -277,10 +277,10 @@
     "alergico": false,
     "fotos": [
       { "idFoto": 16, "urlFoto": "/lineu.jpg" },
-      { "idFoto": 17, "urlFoto": "/lineu.jpg" },
-      { "idFoto": 18, "urlFoto": "/lineu.jpg" },
-      { "idFoto": 19, "urlFoto": "/lineu.jpg" },
-      { "idFoto": 20, "urlFoto": "/lineu.jpg" }
+      { "idFoto": 17, "urlFoto": "/lineu5.png" },
+      { "idFoto": 18, "urlFoto": "/lineu3.png" },
+      { "idFoto": 19, "urlFoto": "/lineu4.png" },
+      { "idFoto": 20, "urlFoto": "/lineu2.png" }
     ],
     "vacinas": [
       {
@@ -336,10 +336,10 @@
     "alergico": false,
     "fotos": [
       { "idFoto": 21, "urlFoto": "/cora.jpg" },
-      { "idFoto": 22, "urlFoto": "/cora.jpg" },
-      { "idFoto": 23, "urlFoto": "/cora.jpg" },
-      { "idFoto": 24, "urlFoto": "/cora.jpg" },
-      { "idFoto": 25, "urlFoto": "/cora.jpg" }
+      { "idFoto": 22, "urlFoto": "/cora2.png" },
+      { "idFoto": 23, "urlFoto": "/cora3.png" },
+      { "idFoto": 24, "urlFoto": "/cora4.png" },
+      { "idFoto": 25, "urlFoto": "/cora5.png" }
     ],
     "vacinas": [
       {
@@ -504,10 +504,10 @@
     "alergico": false,
     "fotos": [
       { "idFoto": 31, "urlFoto": "/oprah.jpg" },
-      { "idFoto": 32, "urlFoto": "/oprah.jpg" },
-      { "idFoto": 33, "urlFoto": "/oprah.jpg" },
-      { "idFoto": 34, "urlFoto": "/oprah.jpg" },
-      { "idFoto": 35, "urlFoto": "/oprah.jpg" }
+      { "idFoto": 32, "urlFoto": "/oprah2.png" },
+      { "idFoto": 33, "urlFoto": "/oprah3.png" },
+      { "idFoto": 34, "urlFoto": "/oprah4.png" },
+      { "idFoto": 35, "urlFoto": "/oprah5.png " }
     ],
     "vacinas": [
       {
@@ -597,10 +597,10 @@
     "alergico": false,
     "fotos": [
       { "idFoto": 36, "urlFoto": "/silva.jpg" },
-      { "idFoto": 37, "urlFoto": "/silva.jpg" },
-      { "idFoto": 38, "urlFoto": "/silva.jpg" },
-      { "idFoto": 39, "urlFoto": "/silva.jpg" },
-      { "idFoto": 40, "urlFoto": "/silva.jpg" }
+      { "idFoto": 37, "urlFoto": "/silva2.png" },
+      { "idFoto": 38, "urlFoto": "/silva3.png" },
+      { "idFoto": 39, "urlFoto": "/silva4.png" },
+      { "idFoto": 40, "urlFoto": "/silva5.png" }
     ],
     "vacinas": [
       {

@@ -85,11 +85,10 @@
 /* Botão inferior "Exibir todos" */
 .ver-todos {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   margin-top: 25px;
-  width: 60%; 
-  
+  width: 100%;
 }
 
 .ver-todos-button {
