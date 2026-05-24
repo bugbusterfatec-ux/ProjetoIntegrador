@@ -3,83 +3,74 @@ import { useEffect } from 'react'
 
 export const VLibrasWidget = () => {
     useEffect(() => {
-        let scriptAttempts = 0
-        const maxAttempts = 3
+        let attempts = 0
+        const maxAttempts = 5
 
-        const tryLoadVLibras = () => {
-            if ((window as any).VLibras) {
-                console.log('VLibras disponível, inicializando...')
+        const initializeVLibras = () => {
+            attempts++
+            console.log(`[VLibras] Tentativa ${attempts}/${maxAttempts}`)
 
-                // Configura os atributos
-                const vlibrasWrapper = document.querySelector('.vlibras-wrapper') as HTMLElement
-                if (vlibrasWrapper) {
-                    const enabledDiv = vlibrasWrapper.querySelector('.enabled') as HTMLElement
-                    const activeDiv = vlibrasWrapper.querySelector('.active') as HTMLElement
-                    const pluginDiv = vlibrasWrapper.querySelector('[data-plugin-wrapper]') as HTMLElement
-
-                    if (enabledDiv) enabledDiv.setAttribute('vw', '')
-                    if (activeDiv) activeDiv.setAttribute('vw-access-button', '')
-                    if (pluginDiv) pluginDiv.setAttribute('vw-plugin-wrapper', '')
-                }
-
+            if (typeof (window as any).VLibras !== 'undefined') {
+                console.log('[VLibras] Widget criando...')
                 try {
                     new (window as any).VLibras.Widget('https://vlibras.gov.br/app')
-                    console.log('Widget VLibras inicializado com sucesso')
-                } catch (error) {
-                    console.error('Erro ao inicializar VLibras Widget:', error)
+                    console.log('[VLibras] ✓ Widget inicializado com sucesso!')
+                    return true
+                } catch (e) {
+                    console.error('[VLibras] Erro ao criar widget:', e)
+                    return false
                 }
-            } else if (scriptAttempts < maxAttempts) {
-                scriptAttempts++
-                console.log(`VLibras não disponível, tentativa ${scriptAttempts}/${maxAttempts}`)
-                setTimeout(tryLoadVLibras, 500)
-            } else {
-                console.warn('VLibras não pôde ser carregado após múltiplas tentativas')
             }
+
+            if (attempts < maxAttempts) {
+                setTimeout(initializeVLibras, 300)
+            } else {
+                console.error('[VLibras] ✗ Não foi possível carregar após', maxAttempts, 'tentativas')
+            }
+
+            return false
         }
 
-        // Carrega o script do VLibras
+        // Verifica se o script já foi carregado
+        const existingScript = document.querySelector('script[src*="vlibras-plugin"]')
+        if (existingScript) {
+            console.log('[VLibras] Script já existe, iniciando widget...')
+            setTimeout(initializeVLibras, 100)
+            return
+        }
+
+        // Cria e adiciona o script
+        console.log('[VLibras] Carregando script...')
         const script = document.createElement('script')
         script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js'
         script.async = true
-        script.defer = true
-        script.crossOrigin = 'anonymous'
+        script.type = 'text/javascript'
 
         script.onload = () => {
-            console.log('Script VLibras carregado com sucesso')
-            setTimeout(tryLoadVLibras, 200)
+            console.log('[VLibras] ✓ Script carregado')
+            setTimeout(initializeVLibras, 100)
         }
 
-        script.onerror = (error) => {
-            console.error('Erro ao carregar script VLibras:', error)
-            setTimeout(() => {
-                console.log('Tentando carregar VLibras novamente...')
-                tryLoadVLibras()
-            }, 1000)
-        }
-
-        // Remove script anterior se existir para evitar conflitos
-        const existingScript = document.querySelector('script[src*="vlibras-plugin"]')
-        if (existingScript && existingScript !== script) {
-            existingScript.remove()
+        script.onerror = () => {
+            console.error('[VLibras] ✗ Erro ao carregar script de https://vlibras.gov.br/app/vlibras-plugin.js')
+            // Tenta carregar de um CDN alternativo
+            console.log('[VLibras] Tentando CDN alternativo...')
+            script.src = 'https://cdn.jsdelivr.net/npm/vlibras-plugin/dist/vlibras-plugin.js'
+            script.onerror = () => {
+                console.error('[VLibras] ✗ Ambas as tentativas falharam')
+            }
+            document.head.appendChild(script)
         }
 
         document.head.appendChild(script)
-
-        return () => {
-            if (script.parentNode) {
-                script.parentNode.removeChild(script)
-            }
-        }
     }, [])
 
     return (
-        <div className="vlibras-wrapper">
-            <div className="enabled">
-                <div className="active"></div>
-                <div data-plugin-wrapper="">
-                    <div className="vw-plugin-top-wrapper"></div>
-                </div>
-            </div>
-        </div>
+        <div
+            className="vlibras-wrapper"
+            dangerouslySetInnerHTML={{
+                __html: '<div vw class="enabled"><div vw-access-button class="active"></div><div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div></div>'
+            }}
+        />
     )
 }
