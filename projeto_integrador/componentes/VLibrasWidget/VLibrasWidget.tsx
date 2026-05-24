@@ -46,7 +46,21 @@ export const VLibrasWidget = () => {
 
                     // Inicializa o widget
                     new (window as any).VLibras.Widget('https://vlibras.gov.br/app')
+
+                    // Debug: Verifica o estado do DOM
+                    const allVwElements = document.querySelectorAll('[vw], [vw-access-button], [vw-plugin-wrapper]')
                     console.log('[VLibras] ✓ Widget inicializado com sucesso!')
+                    console.log('[VLibras] Elementos vw encontrados no DOM:', allVwElements.length)
+                    allVwElements.forEach((el, idx) => {
+                        console.log(`[VLibras] Elemento ${idx}:`, el.tagName, el.getAttribute('vw'), el.getAttribute('vw-access-button'), el.getAttribute('vw-plugin-wrapper'))
+                    })
+
+                    // Verifica se há elementos criados pelo VLibras
+                    setTimeout(() => {
+                        const vlibrasElements = document.querySelectorAll('[class*="vlibras"], [data-vlibras]')
+                        console.log('[VLibras] Elementos VLibras criados:', vlibrasElements.length)
+                    }, 500)
+
                     return true
                 } catch (e) {
                     console.error('[VLibras] Erro ao criar widget:', e)
