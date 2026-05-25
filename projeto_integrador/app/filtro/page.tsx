@@ -7,7 +7,6 @@ import { CustomAcessibilidade } from "@/componentes/CustomAcessibilidade/CustomA
 import { CustomMenuLateral } from "@/componentes/CustomMenuLateral/CustomMenuLateral";
 import { CustomNavBar } from "@/componentes/CustomNavBar/CustomNavBar";
 import { CustomFooter } from "@/componentes/CustomFooter/CustomFooter";
-import { CustomFiltroDaltonismo } from "@/componentes/CustomFiltroDaltonismo/CustomFiltroDaltonismo";
 import style from "./filtro.module.css"
 
 export default function FiltroPage() {
@@ -15,6 +14,7 @@ export default function FiltroPage() {
     const [menuAberto, setMenuAberto] = useState(false)
     const [indicePergunta, setIndicePergunta] = useState(0)
     const [respostaSelecionada, setRespostaSelecionada] = useState("")
+    const [respostas, setRespostas] = useState<Record<number, string>>({})
     const [casaAtual, setCasaAtual] = useState(0)
     const [animalJogador, setAnimalJogador] = useState("dog")
     const [posicaoCachorro, setPosicaoCachorro] = useState({ x: 100, y: 200 })
@@ -29,29 +29,29 @@ export default function FiltroPage() {
 
     const perguntas = [
         {
-            titulo: "Voce prefere:",
+            titulo: "Você prefere:",
             opcoes: [
                 { texto: "Cachorro", valor: "dog" },
                 { texto: "Gato", valor: "cat" },
             ],
         },
         {
-            titulo: "Qual porte voce prefere:",
+            titulo: "Qual porte você prefere:",
             opcoes: [
                 { texto: "Pequeno porte", valor: "pequeno" },
-                { texto: "Medio porte", valor: "medio" },
+                { texto: "Médio porte", valor: "medio" },
                 { texto: "Grande porte", valor: "grande" },
             ],
         },
         {
-            titulo: "Qual ambiente voce prefere:",
+            titulo: "Qual ambiente você prefere:",
             opcoes: [
                 { texto: "Apartamento", valor: "apartamento" },
                 { texto: "Casa com quintal", valor: "casa" },
             ],
         },
         {
-            titulo: "Quanto tempo voce tem para exercicios:",
+            titulo: "Quanto tempo você tem para exercícios:",
             opcoes: [
                 { texto: "Pouco tempo", valor: "pouco" },
                 { texto: "Tempo moderado", valor: "moderado" },
@@ -59,18 +59,18 @@ export default function FiltroPage() {
             ],
         },
         {
-            titulo: "Qual sua experiencia com pets:",
+            titulo: "Qual sua experiência com pets:",
             opcoes: [
                 { texto: "Iniciante", valor: "iniciante" },
-                { texto: "Intermediario", valor: "intermediario" },
+                { texto: "Intermediário", valor: "intermediario" },
                 { texto: "Experiente", valor: "experiente" },
             ],
         },
         {
-            titulo: "Voce prefere um pet:",
+            titulo: "Você prefere um pet:",
             opcoes: [
                 { texto: "Mais calmo e tranquilo", valor: "calmo" },
-                { texto: "Mais ativo e brincalhao", valor: "ativo" },
+                { texto: "Mais ativo e brincalhão", valor: "ativo" },
             ],
         },
     ]
@@ -135,7 +135,7 @@ export default function FiltroPage() {
     }, [casaAtual, pontosTrilha])
 
     useEffect(() => {
-        adicionarLog("Questionario carregado. Responda para encontrar seu companheiro ideal.")
+        adicionarLog("Questionário carregado. Responda para encontrar seu companheiro ideal.")
     }, [])
 
     const moverPorPassos = async (passos: number) => {
@@ -156,21 +156,31 @@ export default function FiltroPage() {
 
         setMovendo(true)
 
+        const novasRespostas = { ...respostas, [indicePergunta]: respostaSelecionada }
+        setRespostas(novasRespostas)
+
         if (indicePergunta === 0) {
             setAnimalJogador(respostaSelecionada === "cat" ? "cat" : "dog")
-            adicionarLog(respostaSelecionada === "cat" ? "Voce escolheu gato. O jogador agora e um gatinho." : "Voce escolheu cachorro.")
+            adicionarLog(respostaSelecionada === "cat" ? "Você escolheu gato. O jogador agora é um gatinho." : "Você escolheu cachorro.")
         }
 
-        adicionarLog("Resposta confirmada. Avancando 3 casas.")
+        adicionarLog("Resposta confirmada. Avançando 3 casas.")
         const novaCasa = await moverPorPassos(3)
 
         if (indicePergunta < perguntas.length - 1 && novaCasa < totalCasas - 1) {
             setIndicePergunta((valorAtual) => valorAtual + 1)
         } else {
+            const chaves = ["especie", "porte", "ambiente", "exercicio", "experiencia", "personalidade"]
+            const resultado: Record<string, string> = {}
+            chaves.forEach((chave, i) => {
+                resultado[chave] = novasRespostas[i] ?? ""
+            })
+            localStorage.setItem("quizRespostas", JSON.stringify(resultado))
+
             setFimQuiz(true)
             setMostrarModal(true)
             gerarConfetes()
-            adicionarLog("Parabens! Voce concluiu o caminho e esta pronto para adotar.")
+            adicionarLog("Parabéns! Você concluiu o caminho e está pronto para adotar.")
         }
 
         setRespostaSelecionada("")
@@ -191,16 +201,13 @@ export default function FiltroPage() {
             {/* <!-- Menu Lateral --> */}
             <CustomMenuLateral aberto={menuAberto} onCloseMenu={() => setMenuAberto(false)} />
 
-            {/* <!-- Filtro de Acessibilidade --> */}
-            <CustomFiltroDaltonismo />
-
             <main className={style.paginaFiltro}>
                 <section className={style.cabecalhoTitulo}>
                     <h1>SOBRE NOSSO CANIL</h1>
                 </section>
 
                 <section className={style.historiaSection}>
-                    <h2>NOSSA HISTORIA</h2>
+                    <h2>NOSSA HISTÓRIA</h2>
                     <div className={style.historiaTexto}>
                         Nosso canil nasceu de uma necessidade da nossa cidade, onde nossos animais precisavam de cuidado e carinho.
                     </div>
@@ -212,9 +219,9 @@ export default function FiltroPage() {
                         <div className={style.cardConteudo}>
                             <img src="/bg_passeio.png" alt="Passeio com cachorro" />
                             <p>
-                                Se voce tem tempo sobrando? Que tal levar um AUmigo do Canil para passear?
-                                Basta voce escolher um AUmigo, fazer seu cadastro e aguardar um humano te mandar
-                                mensagem para diversao comecar.
+                                Se você tem tempo sobrando? Que tal levar um AUmigo do Canil para passear?
+                                Basta você escolher um AUmigo, fazer seu cadastro e aguardar um humano te mandar
+                                mensagem para a diversão começar.
                             </p>
                         </div>
                         <button type="button" className={style.cardBotao} onClick={() => router.push('/sobrenos')}>PASSEAR</button>
@@ -226,8 +233,8 @@ export default function FiltroPage() {
                             <img src="/bg_festaPijama.png" alt="Cachorro com pijama" />
                             <p>
                                 Eu e meus AUmigos amamos uma festa. Que tal comprar uns petiscos e assistir um filme
-                                de chorar abracada comigo, ou um filme de terror e eu te protejo? Escolha um AUmigo,
-                                se cadastre e um humano ira entrar em contato.
+                                de chorar abraçada comigo, ou um filme de terror e eu te protejo? Escolha um AUmigo,
+                                se cadastre e um humano irá entrar em contato.
                             </p>
                         </div>
                         <button type="button" className={style.cardBotao} onClick={() => router.push('/sobrenos')}>FESTA DO PIJAMA</button>
@@ -238,11 +245,11 @@ export default function FiltroPage() {
                     <div>
                         <h3>PARA ADOTAR</h3>
                         <p>
-                            Para que voce encontre seu melhor amigo de primeira, fizemos um joguinho para voce preencher.
-                            Caso queira conhecer todos os animais do canil, so clicar ao lado.
+                            Para que você encontre seu melhor amigo de primeira, fizemos um joguinho para você preencher.
+                            Caso queira conhecer todos os animais do canil, só clicar ao lado.
                         </p>
                     </div>
-                    <button type="button" onClick={() => router.push('/meetinpet')}>CONHECER TODOS</button>
+                    <button type="button" onClick={() => { localStorage.removeItem("quizRespostas"); router.push('/meetinpet'); }}>CONHECER TODOS</button>
                 </section>
 
                 <section className={style.trilhaSection}>
@@ -339,7 +346,7 @@ export default function FiltroPage() {
                             ))}
                         </div>
 
-                        <button type="button" className={style.gameConhecerBtn} onClick={() => router.push('/meetinpet')}>Conhecer os animais</button>
+                        <button type="button" className={style.gameConhecerBtn} onClick={() => { if (!fimQuiz) localStorage.removeItem("quizRespostas"); router.push('/meetinpet'); }}>Conhecer os animais</button>
                     </div>
                 </section>
             </main>
@@ -347,7 +354,15 @@ export default function FiltroPage() {
             <div className={`${style.congratulationsModal} ${mostrarModal ? style.showModal : ""}`}>
                 <div className={style.modalContent}>
                     <span className={style.modalEmoji}>🎉</span>
-                    Parabens! Voce esta preparado para adotar um amigo!
+                    Parabéns! Você está preparado para adotar um amigo!
+                    <button
+                        type="button"
+                        className={style.cardBotao}
+                        style={{ marginTop: "1rem" }}
+                        onClick={() => router.push("/meetinpet")}
+                    >
+                        Ver meus resultados
+                    </button>
                 </div>
                 <div className={style.confettiContainer}>
                     {confetes.map((item, index) => (
