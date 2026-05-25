@@ -209,7 +209,8 @@ export default function FiltroPage() {
                 <section className={style.historiaSection}>
                     <h2>NOSSA HISTÓRIA</h2>
                     <div className={style.historiaTexto}>
-                        Nosso canil nasceu de uma necessidade da nossa cidade, onde nossos animais precisavam de cuidado e carinho.
+                        O Departamento de Bem-Estar Animal (DPBEA) é o setor responsável por promover ações que garantem a proteção, cuidado e qualidade de vida dos animais do município de Votorantim. Dentro do projeto, o DPBEA ganha uma plataforma moderna e totalmente integrada ao sistema administrativo, permitindo mais transparência e eficiência na divulgação de cães e gatos disponíveis para adoção.
+                        Por meio dessa ferramenta, o departamento pode gerenciar em um só lugar todas as informações dos animais: fotos, vídeos, histórico, perfil social, vacinação, adestramento e status de adoção. Isso facilita o acompanhamento do processo, aumenta a visibilidade dos animais e aproxima o DPBEA da comunidade, fortalecendo a adoção responsável.
                     </div>
                 </section>
 
@@ -327,14 +328,11 @@ export default function FiltroPage() {
                         </svg>
 
                         <article className={style.cartaoHistoriaTopo}>
-                            <img src="/DBEA.png" alt="Canil" />
-                            <p>Colocar um texto sobre o inicio do canil, data, contar um pouco da historia.</p>
+                            <img src="/SolLua.png" alt="mascotes" style={{width: "48%", height: "auto"}}/>
+                            <p>Olá, Muito prazer! Nós somos os mascotes do Departamento de Bem-Estar Animal, somos Sol e Lua. Responda as perguntas para sabermos se está apto a nos levar pra casa.</p>
                         </article>
 
-                        <article className={style.cartaoHistoriaBase}>
-                            <img src="/DBEA.png" alt="Canil" />
-                            <p>Colocar um texto sobre o inicio do canil, data, contar um pouco da historia.</p>
-                        </article>
+                        
 
                         <img src="/bg_casinhaPet.png" alt="Casinha de cachorro" className={style.casinhaFim} />
                     </div>

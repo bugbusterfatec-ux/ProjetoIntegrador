@@ -5,6 +5,9 @@ import { CustomButton } from "@/componentes/CustomButton/CustomButton";
 import style from "./CustomCard/CustomAnimalCard.module.css"
 import styleBtn from "@/componentes/CustomButton/CustomButton.module.css"
 import listaInicial from "@/data/animais.json"
+import { CustomTitle } from "./CustomTitle/CustomTitle";
+import { CustomAlert } from "./CustomAlert/CustomAlert";
+
 
 type Animal = {
     nome: string
@@ -37,6 +40,7 @@ const nivelExperiencia: Record<string, number> = {
     experiente: 3,
 }
 
+
 function calcularScore(animal: Animal, quiz: QuizRespostas): number {
     let score = 0
     if (animal.porte === quiz.porte) score += 1
@@ -50,8 +54,17 @@ function calcularScore(animal: Animal, quiz: QuizRespostas): number {
 }
 
 export const ListaAnimais = () => {
+    interface IAlert {
+    show?: boolean;
+    message?: string;
+    variant?: "warning" | "success";
+    }
+    const [alert, setAlert] = useState<IAlert>();
+
+
     const animais = listaInicial as Animal[]
 
+    
     const [filtros, setFiltros] = useState({
         especie: "",
         sexo: "",
@@ -73,6 +86,8 @@ export const ListaAnimais = () => {
         }
     }, [])
 
+    
+
     const limparRecomendacoes = () => {
         localStorage.removeItem("quizRespostas")
         setQuizRespostas(null)
@@ -89,6 +104,23 @@ export const ListaAnimais = () => {
             .map(({ animal }) => animal)
     }, [quizRespostas, animais])
 
+// PARA o ALERT
+    useEffect(() => {
+    // Só dispara o alerta se o usuário tiver respostas E a lista de recomendados estiver vazia
+        if (quizRespostas && animaisRecomendados.length === 0) {
+            setAlert({
+                show: true,
+                message: "Nenhum animal encontrado para o seu perfil. Confira todos abaixo!",
+                variant: "warning",
+            });
+        } else {
+            // Se a lista tiver animais ou o quiz for limpo, esconde o alerta de "nenhum encontrado"
+            setAlert(prev => prev?.variant === "warning" ? { ...prev, show: false } : prev);
+        }
+    }, [quizRespostas, animaisRecomendados]); // Roda sempre que o quiz ou os recomendados mudarem
+
+
+
     const animaisFiltrados = useMemo(() => {
         return animais.filter((animal) => {
             return (
@@ -104,29 +136,27 @@ export const ListaAnimais = () => {
     return (
         <>
             {/* RECOMENDAÇÕES DO QUIZ */}
+            
+
             {quizRespostas && (
                 <>
-                    <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1rem" }}>
-                        <h2 style={{ margin: 0 }}>Recomendado para você 🐾</h2>
-                        <button
-                            type="button"
+                    <div style={{ display: "flex", flexDirection:"column", alignItems: "center", gap: "1rem", marginBottom: "1rem" }}>
+                        <h2 style={{ margin: 0, color:"#348888" }}>Principais recomendações para você 🐾</h2>
+
+                        <CustomAlert message={alert?.message} show={alert?.show} variant={alert?.variant} />
+
+                        <CustomButton 
+                            label="Limpar recomendações"
                             onClick={limparRecomendacoes}
-                            style={{
-                                background: "none",
-                                border: "1px solid #aaa",
-                                borderRadius: "6px",
-                                padding: "4px 10px",
-                                cursor: "pointer",
-                                fontSize: "0.85rem",
-                                color: "#666"
-                            }}
-                        >
-                            Limpar recomendações
-                        </button>
+                            className={styleBtn.clearBtn}>
+
+                        </CustomButton>
+                        
                     </div>
+                    
 
                     {animaisRecomendados.length === 0 ? (
-                        <p>Nenhum animal encontrado para o seu perfil. Confira todos abaixo!</p>
+                        null
                     ) : (
                         <section className={style.cards}>
                             {animaisRecomendados.map((animal, index) => (
@@ -135,11 +165,13 @@ export const ListaAnimais = () => {
                         </section>
                     )}
 
-                    <hr style={{ margin: "2rem 0" }} />
-                    <h2>Todos os animais</h2>
+                    {<hr style={{ margin: "2rem 0" }} />}
+                    <CustomTitle title="TODOS OS ANIMAIS" style={{ margin:0 }} />
+                    
                 </>
+                
             )}
-
+            
             {/* FILTROS MANUAIS */}
             <div style={{ display: "flex", gap: 10, marginBottom: 20 }}>
                 <CustomSelect
@@ -205,6 +237,7 @@ export const ListaAnimais = () => {
             {/* LISTA COMPLETA */}
             <section className={style.cards}>
                 {animaisFiltrados.length === 0 ? (
+                    
                     <p>Nenhum animal encontrado!</p>
                 ) : (
                     animaisFiltrados.map((animal, index) => (
