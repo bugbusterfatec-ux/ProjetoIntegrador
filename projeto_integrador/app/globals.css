@@ -382,22 +382,51 @@ a {
 
 .carousel-control-prev,
 .carousel-control-next {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.35);
-    top: 50%;
-    bottom: auto;
-    transform: translateY(-50%);
+    width: 80px;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.15), transparent);
+    opacity: 0.6;
+    transition: all 0.3s ease;
     z-index: 2;
+    border: none;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+    background: linear-gradient(to right, rgba(0,0,0,0.3), transparent);
 }
 
 .carousel-control-prev {
-    left: 1rem;
+    left: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.15), transparent);
+}
+
+.carousel-control-prev:hover {
+    background: linear-gradient(to right, rgba(0,0,0,0.3), transparent);
 }
 
 .carousel-control-next {
-    right: 1rem;
+    right: 0;
+    background: linear-gradient(to left, rgba(0,0,0,0.15), transparent);
+}
+
+.carousel-control-next:hover {
+    background: linear-gradient(to left, rgba(0,0,0,0.3), transparent);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 40px;
+    height: 40px;
+    background-size: 100%;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
 }
 
 /* Acesso Rápido */
@@ -476,109 +505,64 @@ a {
     color: var(--cor-branco);
 }
 
-/* VLibras - Posicionamento e tamanho do botão */
-.vlibras-wrapper div[vw-access-button] {
-    position: relative !important;
-    right: auto !important;
-    top: auto !important;
-    transform: none !important;
-    z-index: 1001 !important;
-    margin: 0 !important;
-    width: 50px !important;
-    height: 50px !important;
-    min-width: 50px !important;
-    min-height: 50px !important;
-}
+/*
+ * Grupo de acessibilidade: VLibras (topo) + Daltonismo (baixo)
+ * Grupo total = 50px + 16px gap + 50px = 116px, centrado em 50% da tela.
+ * VLibras top: calc(50% - 58px)
+ * Daltonismo top: calc(50% + 8px)   [= -58px + 50px + 16px]
+ */
 
-/* Fallback para quando não estiver no wrapper */
-div[vw-access-button] {
+/* VLibras - container posicionado no grupo, sem tamanho fixo para o widget poder expandir */
+div[vw] {
     position: fixed !important;
-    right: 0 !important;
-    top: calc(50% - 100px) !important;
-    transform: translateY(-50%) !important;
-    z-index: 1001 !important;
+    right: 0px !important;
+    top: calc(50% - 63px) !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
     margin: 0 !important;
-    width: 50px !important;
-    height: 50px !important;
+    z-index: 9999 !important;
     min-width: 50px !important;
     min-height: 50px !important;
 }
 
-/* VLibras - Aumentar tamanho do botão interno */
-div[vw-access-button] > * {
-    width: 50px !important;
+/* Botão de acesso: 50×50px padrão, permite expansão nativa do VLibras */
+div[vw] div[vw-access-button] {
+    width: 50px;
     height: 50px !important;
-    min-width: 50px !important;
-    min-height: 50px !important;
+    border-radius: 8px !important;
+    right: 0 !important;
+    overflow: hidden !important;
+    transition: width 0.3s ease !important;
 }
 
-/* VLibras - Aumentar tamanho do ícone SVG */
-div[vw-access-button] svg,
-div[vw-access-button] img {
-    width: 30px !important;
-    height: 30px !important;
+/* Hover: expande para a esquerda revelando o banner — VLibras gerencia o layout interno */
+div[vw] div[vw-access-button]:hover {
+    width: 255px !important;
+    border-radius: 8px !important;
 }
 
-/* VLibras - Wrapper */
-.vlibras-wrapper {
-    position: fixed;
-    right: 0;
-    top: calc(65% - 100px);
-    transform: translateY(-50%);
-    z-index: 1001;
-    display: flex;
-    align-items: center;
-    gap: 0;
-    pointer-events: none;
+/* Imagens do botão: altura fixa, largura livre para o VLibras posicionar */
+div[vw] div[vw-access-button] img {
+    max-height: 50px !important;
+    height: 50px !important;
+    width: auto !important;
+    max-width: none !important;
 }
 
-.vlibras-wrapper > * {
-    pointer-events: auto;
+/* Painel do widget: ancora à direita para expandir para a esquerda */
+div[vw] div[vw-plugin-wrapper] {
+    right: 0 !important;
+    left: auto !important;
+    float: right !important;
 }
 
-/* VLibras - Banner Hover */
-.vlibras-banner-hover {
-    position: absolute;
-    right: 60px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: linear-gradient(135deg, #0066CC 0%, #004499 100%);
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none !important;
-    transition: all 0.3s ease;
-    z-index: 1003;
-    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    user-select: none;
-}
-
-.vlibras-wrapper:hover .vlibras-banner-hover {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(-50%) translateX(-5px);
-}
-
-.vlibras-banner-texto {
-    color: var(--cor-branco);
-    font-weight: 600;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    line-height: 1.3;
-    text-align: center;
-}
-
-/* Filtro de Acessibilidade - Wrapper */
+/* Filtro de Acessibilidade - Wrapper (abaixo do VLibras, 16px de gap) */
 .filtro-wrapper {
     position: fixed;
     right: 10px;
-    top: calc(62% + 40px);
-    transform: translateY(-50%);
+    top: calc(50% + 8px);
+    transform: none;
     z-index: 1000;
     display: flex;
     flex-direction: column;
@@ -740,6 +724,27 @@ div[vw-access-button] img {
 .filtro-select option {
     color: #B20000;
     background-color: var(--cor-branco);
+}
+
+/* Filtros de Daltonismo - Aplicados ao body */
+body.filtro-protanopia {
+    filter: url('#protanopia-filter');
+}
+
+body.filtro-deuteranopia {
+    filter: url('#deuteranopia-filter');
+}
+
+body.filtro-tritanopia {
+    filter: url('#tritanopia-filter');
+}
+
+/* SVG Filters inline (invisível) */
+.daltonismo-svg-filters {
+    position: absolute;
+    width: 0;
+    height: 0;
+    pointer-events: none;
 }
 
 /* Notícias */
