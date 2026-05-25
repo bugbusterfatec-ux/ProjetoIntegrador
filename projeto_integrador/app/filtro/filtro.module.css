@@ -144,8 +144,7 @@
     overflow: visible;
 }
 
-.cartaoHistoriaTopo,
-.cartaoHistoriaBase {
+.cartaoHistoriaTopo {
     position: absolute;
     width: 30%;
     display: flex;
@@ -160,21 +159,15 @@
     top: 18px;
 }
 
-.cartaoHistoriaBase {
-    left: 36px;
-    bottom: 132px;
-}
 
-.cartaoHistoriaTopo img,
-.cartaoHistoriaBase img {
+.cartaoHistoriaTopo img {
     width: 150px;
     height: 150px;
     border-radius: 16px;
     object-fit: cover;
 }
 
-.cartaoHistoriaTopo p,
-.cartaoHistoriaBase p {
+.cartaoHistoriaTopo p{
     margin: 0;
     font-size: 0.9rem;
     line-height: 1.35;
@@ -460,13 +453,11 @@
         min-height: 590px;
     }
 
-    .cartaoHistoriaTopo,
-    .cartaoHistoriaBase {
+    .cartaoHistoriaTopo{
         width: 42%;
     }
 
-    .cartaoHistoriaTopo p,
-    .cartaoHistoriaBase p {
+    .cartaoHistoriaTopo p{
         font-size: 0.95rem;
     }
 
@@ -537,8 +528,7 @@
         width: 62px;
     }
 
-    .cartaoHistoriaTopo,
-    .cartaoHistoriaBase {
+    .cartaoHistoriaTopo{
         position: relative;
         width: 100%;
         left: auto;
@@ -551,14 +541,12 @@
         z-index: 3;
     }
 
-    .cartaoHistoriaTopo img,
-    .cartaoHistoriaBase img {
+    .cartaoHistoriaTopo img {
         width: 110px;
         height: 110px;
     }
 
-    .cartaoHistoriaTopo p,
-    .cartaoHistoriaBase p {
+    .cartaoHistoriaTopo p {
         font-size: 0.92rem;
     }
 

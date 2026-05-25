@@ -28,3 +28,19 @@
 .verTodosBtn:hover {
   background-color: #e06e00;
 }
+
+/* Button Limpar recomendações */
+
+.clearBtn {
+    background: none;
+    border: 1px solid #348888;
+    border-radius: 6px;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: #348888;
+}
+
+.clearBtn:hover {
+  background-color: #9ef8ee;
+}
