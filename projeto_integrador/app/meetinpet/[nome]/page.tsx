@@ -6,8 +6,11 @@ import { CustomAcessibilidade } from "@/componentes/CustomAcessibilidade/CustomA
 import { CustomMenuLateral } from "@/componentes/CustomMenuLateral/CustomMenuLateral";
 import { CustomNavBar } from "@/componentes/CustomNavBar/CustomNavBar";
 import { CustomFooter } from "@/componentes/CustomFooter/CustomFooter";
-import styles from "./page.module.css";
+import style from "./page.module.css";
 import animais from "@/data/animais.json";
+import { CustomButton } from "@/componentes/CustomButton/CustomButton";
+import { CustomSection } from "@/componentes/CustomSection/CustomSection";
+import { CustomTitle } from "@/componentes/CustomTitle/CustomTitle";
 
 const especieLabel: Record<string, string> = { gato: "Gato", cachorro: "Cão" };
 const especieEmoji: Record<string, string> = { gato: "🐈", cachorro: "🐕" };
@@ -33,7 +36,7 @@ export default function DetalhesPage({ params }: { params: Promise<{ nome: strin
                 <main style={{ padding: "4rem 2rem", textAlign: "center" }}>
                     <h1>Animal não encontrado</h1>
                     <p>Não encontramos nenhum animal com esse nome.</p>
-                    <button onClick={() => router.push('/meetinpet')}>Ver todos os animais</button>
+                    <CustomButton label="Ver todos os animais" className={style.btnConhecer} onClick={() => router.push('/meetinpet')}></CustomButton>
                 </main>
                 <CustomFooter />
             </>
@@ -49,30 +52,28 @@ export default function DetalhesPage({ params }: { params: Promise<{ nome: strin
             <CustomHeader />
             <CustomNavBar isMenuOpen={menuAberto} onOpenMenu={() => setMenuAberto(true)} />
             <CustomMenuLateral aberto={menuAberto} onCloseMenu={() => setMenuAberto(false)} />
-            <section className={styles.titleDetails}>
-                <button onClick={() => router.back()} className={styles.backButton}>
-                    &lt;&lt; Voltar
-                </button>
-                <h1>DETALHES</h1>
-            </section>
+            <CustomSection className={style.titleDetails}>
+                <CustomButton label="&lt;&lt; Voltar" onClick={() => router.back()} className={style.backButton}></CustomButton>
+                <CustomTitle title="DETALHES"></CustomTitle>
+            </CustomSection>
 
-            <main className={styles.detailsMain}>
-                <section className={styles.detailsContainer}>
+            <main className={style.detailsMain}>
+                <section className={style.detailsContainer}>
 
-                    <div className={styles.heroSection}>
-                        <article className={styles.galeria}>
-                            <div className={styles.imagemPrincipal}>
+                    <div className={style.heroSection}>
+                        <article className={style.galeria}>
+                            <div className={style.imagemPrincipal}>
                                 <img src={fotosUrls[imagemPrincipalIndex]} alt={`${animal.nome} - foto principal`} />
                             </div>
 
                             {fotosUrls.length > 1 && (
-                                <div className={styles.miniaturas}>
+                                <div className={style.miniaturas}>
                                     {fotosUrls.slice(0, 4).map((img, index) => (
                                         <img
                                             key={index}
                                             src={img}
                                             alt={`${animal.nome} - foto ${index + 1}`}
-                                            className={`${styles.thumb} ${imagemPrincipalIndex === index ? styles.ativa : ""}`}
+                                            className={`${style.thumb} ${imagemPrincipalIndex === index ? style.ativa : ""}`}
                                             onClick={() => setImagemPrincipalIndex(index)}
                                         />
                                     ))}
@@ -80,24 +81,24 @@ export default function DetalhesPage({ params }: { params: Promise<{ nome: strin
                             )}
                         </article>
 
-                        <article className={styles.info}>
+                        <article className={style.info}>
                             <h2>Olá, eu sou {animal.nome}</h2>
 
-                            <div className={styles.quickStats}>
-                                <span className={styles.statBadge}>{especieEmoji[animal.especie]} {especieLabel[animal.especie]}</span>
-                                <span className={styles.statBadge}>{sexoEmoji[animal.sexo]} {sexoLabel[animal.sexo]}</span>
-                                <span className={styles.statBadge}>📏 {porteLabel[animal.porte]}</span>
-                                <span className={styles.statBadge}>🎂 {animal.idadeDetalhada}</span>
+                            <div className={style.quickStats}>
+                                <span className={style.statBadge}>{especieEmoji[animal.especie]} {especieLabel[animal.especie]}</span>
+                                <span className={style.statBadge}>{sexoEmoji[animal.sexo]} {sexoLabel[animal.sexo]}</span>
+                                <span className={style.statBadge}>📏 {porteLabel[animal.porte]}</span>
+                                <span className={style.statBadge}>🎂 {animal.idadeDetalhada}</span>
                             </div>
 
-                            <p className={styles.description}>{animal.descricao}</p>
+                            <p className={style.description}>{animal.descricao}</p>
                         </article>
                     </div>
 
-                    <section className={styles.detailsCards}>
-                        <article className={styles.cardDetails}>
-                            <div className={styles.borderDetails}>
-                                <h3>Perfil Social</h3>
+                    <section className={style.detailsCards}>
+                        <article className={style.cardDetails}>
+                            <div className={style.borderDetails}>
+                                <h3>PERFIL SOCIAL</h3>
                                 <p>
                                     <strong>Espécie:</strong> {especieLabel[animal.especie]}<br />
                                     <strong>Sexo:</strong> {sexoLabel[animal.sexo]}<br />
@@ -108,9 +109,9 @@ export default function DetalhesPage({ params }: { params: Promise<{ nome: strin
                             </div>
                         </article>
 
-                        <article className={styles.cardDetailsCentral}>
-                            <div className={styles.borderDetailsCentral}>
-                                <h3>Prontuário</h3>
+                        <article className={style.cardDetailsCentral}>
+                            <div className={style.borderDetailsCentral}>
+                                <h3>PRONTUÁRIO</h3>
                                 <p>
                                     {animal.vacinacao ? "✓" : "✗"} Vacinado<br />
                                     {animal.vermifugado ? "✓" : "✗"} Vermifugado<br />
@@ -122,9 +123,9 @@ export default function DetalhesPage({ params }: { params: Promise<{ nome: strin
                             </div>
                         </article>
 
-                        <article className={styles.cardDetails}>
-                            <div className={styles.borderDetails}>
-                                <h3>Adestramento</h3>
+                        <article className={style.cardDetails}>
+                            <div className={style.borderDetails}>
+                                <h3>ADESTRAMENTO</h3>
                                 <p>
                                     {adestramentoAtual?.tempoAdestramento ? (
                                         <><strong>Tempo:</strong> {adestramentoAtual.tempoAdestramento}<br /><br /></>
@@ -145,10 +146,10 @@ export default function DetalhesPage({ params }: { params: Promise<{ nome: strin
                         </article>
                     </section>
 
-                    <div className={styles.cardBotoes}>
-                        <button onClick={() => router.push('/sobrenos')}>Passear</button>
-                        <button>Adotar</button>
-                        <button onClick={() => router.push('/sobrenos')}>Festa do Pijama</button>
+                    <div className={style.cardBotoes}>
+                        <button onClick={() => router.push('/sobrenos')}>PASSEAR</button>
+                        <button>ADOTAR</button>
+                        <button onClick={() => router.push('/sobrenos')}>FESTA DO PIJAMA</button>
                     </div>
 
                 </section>
