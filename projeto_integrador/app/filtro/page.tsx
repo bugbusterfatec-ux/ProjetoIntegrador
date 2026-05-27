@@ -8,6 +8,8 @@ import { CustomMenuLateral } from "@/componentes/CustomMenuLateral/CustomMenuLat
 import { CustomNavBar } from "@/componentes/CustomNavBar/CustomNavBar";
 import { CustomFooter } from "@/componentes/CustomFooter/CustomFooter";
 import style from "./filtro.module.css"
+import { CustomSection } from "@/componentes/CustomSection/CustomSection";
+import { CustomButton } from "@/componentes/CustomButton/CustomButton";
 
 export default function FiltroPage() {
     const router = useRouter()
@@ -201,18 +203,19 @@ export default function FiltroPage() {
             {/* <!-- Menu Lateral --> */}
             <CustomMenuLateral aberto={menuAberto} onCloseMenu={() => setMenuAberto(false)} />
 
+{/* Componentizar section e article */}
             <main className={style.paginaFiltro}>
-                <section className={style.cabecalhoTitulo}>
+                <CustomSection className={style.cabecalhoTitulo}>
                     <h1>SOBRE NOSSO CANIL</h1>
-                </section>
+                </CustomSection>
 
-                <section className={style.historiaSection}>
+                <CustomSection className={style.historiaSection}>
                     <h2>NOSSA HISTÓRIA</h2>
-                    <div className={style.historiaTexto}>
+                    <div className={style.historiaTexto} >
                         O Departamento de Bem-Estar Animal (DPBEA) é o setor responsável por promover ações que garantem a proteção, cuidado e qualidade de vida dos animais do município de Votorantim. Dentro do projeto, o DPBEA ganha uma plataforma moderna e totalmente integrada ao sistema administrativo, permitindo mais transparência e eficiência na divulgação de cães e gatos disponíveis para adoção.
                         Por meio dessa ferramenta, o departamento pode gerenciar em um só lugar todas as informações dos animais: fotos, vídeos, histórico, perfil social, vacinação, adestramento e status de adoção. Isso facilita o acompanhamento do processo, aumenta a visibilidade dos animais e aproxima o DPBEA da comunidade, fortalecendo a adoção responsável.
                     </div>
-                </section>
+                </CustomSection>
 
                 <section className={style.cardsAtividades}>
                     <article className={style.cardAtividade}>
@@ -225,7 +228,7 @@ export default function FiltroPage() {
                                 mensagem para a diversão começar.
                             </p>
                         </div>
-                        <button type="button" className={style.cardBotao} onClick={() => router.push('/sobrenos')}>PASSEAR</button>
+                        <CustomButton label="PASSEAR" className={style.cardBotao} onClick={() => router.push('/sobrenos')}></CustomButton>
                     </article>
 
                     <article className={style.cardAtividade}>
@@ -238,7 +241,7 @@ export default function FiltroPage() {
                                 se cadastre e um humano irá entrar em contato.
                             </p>
                         </div>
-                        <button type="button" className={style.cardBotao} onClick={() => router.push('/sobrenos')}>FESTA DO PIJAMA</button>
+                        <CustomButton label="FESTA DO PIJAMA" className={style.cardBotao} onClick={() => router.push('/sobrenos')}></CustomButton>
                     </article>
                 </section>
 
@@ -250,7 +253,7 @@ export default function FiltroPage() {
                             Caso queira conhecer todos os animais do canil, só clicar ao lado.
                         </p>
                     </div>
-                    <button type="button" onClick={() => { localStorage.removeItem("quizRespostas"); router.push('/meetinpet'); }}>CONHECER TODOS</button>
+                    <CustomButton label="CONHECER TODOS" className={style.ctaAdotarButton} onClick={() => { localStorage.removeItem("quizRespostas"); router.push('/meetinpet'); }}></CustomButton>
                 </section>
 
                 <section className={style.trilhaSection}>
@@ -344,7 +347,11 @@ export default function FiltroPage() {
                             ))}
                         </div>
 
-                        <button type="button" className={style.gameConhecerBtn} onClick={() => { if (!fimQuiz) localStorage.removeItem("quizRespostas"); router.push('/meetinpet'); }}>Conhecer os animais</button>
+                        <CustomButton 
+                            label="Conhecer os animais" 
+                            className={style.gameConhecerBtn} 
+                            onClick={() => { if (!fimQuiz) localStorage.removeItem("quizRespostas"); router.push('/meetinpet'); }}
+                        ></CustomButton>
                     </div>
                 </section>
             </main>

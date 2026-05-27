@@ -412,6 +412,11 @@
     cursor: pointer;
 }
 
+.cardBotao:hover {
+    background: #e06e00;
+
+}
+
 .ctaAdotar {
     background: #348888;
     border-radius: 24px;
@@ -436,7 +441,7 @@
     max-width: 900px;
 }
 
-.ctaAdotar button {
+.ctaAdotarButton {
     border: none;
     border-radius: 28px;
     background: #ff8500;
@@ -446,6 +451,11 @@
     padding: 22px 42px;
     min-width: 260px;
     cursor: pointer;
+}
+
+.ctaAdotarButton:hover {
+    background: #e06e00;
+
 }
 
 @media (max-width: 1024px) {

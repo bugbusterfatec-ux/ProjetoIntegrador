@@ -1,8 +1,8 @@
 import { useState, useMemo, useEffect } from "react"
-import { CustomAnimalCard } from "./CustomCard/CustomAnimalCard"
+import { CustomAnimalCard } from "./CustomAnimalCard/CustomAnimalCard"
 import { CustomSelect } from "./CustomSelect/CustomSelect"
 import { CustomButton } from "@/componentes/CustomButton/CustomButton";
-import style from "./CustomCard/CustomAnimalCard.module.css"
+import style from "./CustomAnimalCard/CustomAnimalCard.module.css"
 import styleBtn from "@/componentes/CustomButton/CustomButton.module.css"
 import listaInicial from "@/data/animais.json"
 import { CustomTitle } from "./CustomTitle/CustomTitle";
