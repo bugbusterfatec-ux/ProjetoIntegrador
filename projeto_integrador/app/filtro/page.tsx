@@ -359,14 +359,16 @@ export default function FiltroPage() {
             <div className={`${style.congratulationsModal} ${mostrarModal ? style.showModal : ""}`}>
                 <div className={style.modalContent}>
                     <span className={style.modalEmoji}>🎉</span>
-                    Parabéns! Você está preparado para adotar um amigo!
+                    Parabéns!
+                    < br />
+                    Você está preparado para adotar um amigo!
                     <button
                         type="button"
                         className={style.cardBotao}
                         style={{ marginTop: "1rem" }}
                         onClick={() => router.push("/meetinpet")}
                     >
-                        Ver meus resultados
+                        VER MEUS RESULTADOS
                     </button>
                 </div>
                 <div className={style.confettiContainer}>

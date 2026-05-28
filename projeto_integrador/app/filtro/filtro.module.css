@@ -251,14 +251,14 @@
 }
 
 .modalContent {
-    background: linear-gradient(135deg, #16a34a, #22c55e);
+    background: linear-gradient(135deg, #348888, #9ef8ee);
     color: #ffffff;
     border-radius: 20px;
     padding: 30px;
     text-align: center;
     font-size: 1.4rem;
     font-weight: 700;
-    box-shadow: 0 10px 30px rgba(22, 163, 74, 0.5);
+    box-shadow: 0 10px 30px rgba(52, 136, 136, 0.4);
     animation: modal-bounce 0.8s ease-out forwards;
     position: relative;
     z-index: 1001;

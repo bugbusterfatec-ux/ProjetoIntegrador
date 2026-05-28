@@ -91,7 +91,7 @@ a {
 }
 
 .logoMeetin {
-    width: 200px;
+    width: 300px;
     padding: 10px 20px 10px 0px;
 
 }
@@ -860,7 +860,7 @@ body.filtro-tritanopia {
 }
 
 .texto-noticia {
-    color: #5F9EA0;
+    color: #348888;
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: 1rem;
@@ -868,7 +868,7 @@ body.filtro-tritanopia {
 }
 
 .frase-destaque {
-    color: #5F9EA0;
+    color: #348888;
     font-size: 0.95rem;
     font-style: italic;
     margin-top: auto;
