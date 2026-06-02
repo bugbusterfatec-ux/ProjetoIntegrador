@@ -5,6 +5,7 @@ interface CustomButtonProps {
   onClick?: () => void
   target?: string
   className?: string
+  
 }
 
 
@@ -13,7 +14,8 @@ export const CustomButton = ({
     href,
     onClick,
     target = "_blank",
-    className = ""
+    className = "",
+    
 }: CustomButtonProps) => {
     if (href) {
         return (
@@ -21,6 +23,7 @@ export const CustomButton = ({
             href={href} 
             target={target} 
             className={`card-passeio-btn ${className}`}
+            
         >
             {label}
         </a>

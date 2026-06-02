@@ -144,8 +144,7 @@
     overflow: visible;
 }
 
-.cartaoHistoriaTopo,
-.cartaoHistoriaBase {
+.cartaoHistoriaTopo {
     position: absolute;
     width: 30%;
     display: flex;
@@ -160,21 +159,15 @@
     top: 18px;
 }
 
-.cartaoHistoriaBase {
-    left: 36px;
-    bottom: 132px;
-}
 
-.cartaoHistoriaTopo img,
-.cartaoHistoriaBase img {
+.cartaoHistoriaTopo img {
     width: 150px;
     height: 150px;
     border-radius: 16px;
     object-fit: cover;
 }
 
-.cartaoHistoriaTopo p,
-.cartaoHistoriaBase p {
+.cartaoHistoriaTopo p{
     margin: 0;
     font-size: 0.9rem;
     line-height: 1.35;
@@ -258,14 +251,14 @@
 }
 
 .modalContent {
-    background: linear-gradient(135deg, #16a34a, #22c55e);
+    background: linear-gradient(135deg, #348888, #9ef8ee);
     color: #ffffff;
     border-radius: 20px;
     padding: 30px;
     text-align: center;
     font-size: 1.4rem;
     font-weight: 700;
-    box-shadow: 0 10px 30px rgba(22, 163, 74, 0.5);
+    box-shadow: 0 10px 30px rgba(52, 136, 136, 0.4);
     animation: modal-bounce 0.8s ease-out forwards;
     position: relative;
     z-index: 1001;
@@ -419,6 +412,11 @@
     cursor: pointer;
 }
 
+.cardBotao:hover {
+    background: #e06e00;
+
+}
+
 .ctaAdotar {
     background: #348888;
     border-radius: 24px;
@@ -443,7 +441,7 @@
     max-width: 900px;
 }
 
-.ctaAdotar button {
+.ctaAdotarButton {
     border: none;
     border-radius: 28px;
     background: #ff8500;
@@ -455,18 +453,21 @@
     cursor: pointer;
 }
 
+.ctaAdotarButton:hover {
+    background: #e06e00;
+
+}
+
 @media (max-width: 1024px) {
     .trilhaCanvas {
         min-height: 590px;
     }
 
-    .cartaoHistoriaTopo,
-    .cartaoHistoriaBase {
+    .cartaoHistoriaTopo{
         width: 42%;
     }
 
-    .cartaoHistoriaTopo p,
-    .cartaoHistoriaBase p {
+    .cartaoHistoriaTopo p{
         font-size: 0.95rem;
     }
 
@@ -537,8 +538,7 @@
         width: 62px;
     }
 
-    .cartaoHistoriaTopo,
-    .cartaoHistoriaBase {
+    .cartaoHistoriaTopo{
         position: relative;
         width: 100%;
         left: auto;
@@ -551,14 +551,12 @@
         z-index: 3;
     }
 
-    .cartaoHistoriaTopo img,
-    .cartaoHistoriaBase img {
+    .cartaoHistoriaTopo img {
         width: 110px;
         height: 110px;
     }
 
-    .cartaoHistoriaTopo p,
-    .cartaoHistoriaBase p {
+    .cartaoHistoriaTopo p {
         font-size: 0.92rem;
     }
 

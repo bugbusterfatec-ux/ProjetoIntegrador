@@ -1,0 +1,158 @@
+.sobre {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.sobreContentH1 {
+  color: #fff;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 500;
+  text-align: center;
+  margin: 20px 0 0 0;
+  width: 100%;
+  padding-bottom: 20px;
+  opacity: 0;
+  transform: translateX(100px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.sobreContentImg {
+  width: 100%;
+  height: 100%;
+}
+
+/* CONTAINER DA IMAGEM: Responsável apenas pelo Scroll Lateral */
+.imageScrollContainer {
+  width: 450px;
+  height: 500px;
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition-delay: 0.25s;
+}
+
+/* CONTAINER DA FLUTUAÇÃO: Ativa o efeito vertical após o card aparecer */
+.imageFloatContainer {
+  width: 100%;
+  height: 100%;
+}
+
+/* A IMAGEM EM SI: Responsável pelas formas e pelo efeito de HOVER */
+.blob {
+  object-fit: cover;
+  border-radius: 30px;
+  clip-path: xywh(0 5px 100% 75% round 15% 0);
+  transition: transform 0.4s ease;
+}
+
+/* O Hover agora funciona de forma limpa e isolada */
+.blob:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+.sobreContentP {
+  width: 46%;
+  font-size: 1.2em;
+  text-align: justify;
+  opacity: 0;
+  transform: translateX(100px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition-delay: 0.5s;
+}
+
+/* GATILHOS DE APARIÇÃO (INTERSECTION OBSERVER) */
+.sobre.appear .sobreContentH1,
+.sobre.appear .sobreContentP,
+.sobre.appear .imageScrollContainer {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Ativa as animações infinitas de flutuar somente após o card surgir na tela */
+.sobre.appear .imageFloatContainer {
+  animation: floatBlob 4s ease-in-out infinite;
+}
+
+.sobre.appear .btnFloatContainer {
+  animation: floatBtn 6s ease-in-out infinite;
+}
+
+/* BOTÃO: Estilos base e animação de HOVER */
+.btnFloatContainer {
+  display: inline-block;
+  margin: 40px 20px;
+}
+
+.btnConhecer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 340px;
+  height: 50px;
+  text-align: center;
+  padding: 12px;
+  background-color: #FA7F08;
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.3s ease;
+}
+
+.btnConhecer:hover {
+  background-color: #e06e00;
+  transform: scale(1.05) rotate(2deg);
+}
+
+/* KEYFRAMES DE FLUTUAÇÃO INDEPENDENTES */
+@keyframes floatBlob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+@keyframes floatBtn {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+  .sobre {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sobreContentH1 {
+    font-size: 1.6rem;
+  }
+
+  .imageScrollContainer {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .sobreContentP {
+    width: 100%;
+    text-align: left;
+    font-size: 1rem;
+  }
+
+  .btnFloatContainer {
+    width: 100%;
+    max-width: 340px;
+    margin: 30px 0;
+  }
+
+  .btnConhecer {
+    width: 100%;
+  }
+}

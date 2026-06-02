@@ -4,13 +4,11 @@ import { useState } from "react";
 import { CustomAcessibilidade } from "@/componentes/CustomAcessibilidade/CustomAcessibilidade";
 import { CustomAcessoRapido } from "@/componentes/CustomAcessoRapido/CustomAcessoRapido";
 import { CustomCarrossel } from "@/componentes/CustomCarrossel/CustomCarrossel";
-import { CustomFiltroDaltonismo } from "@/componentes/CustomFiltroDaltonismo/CustomFiltroDaltonismo";
 import { CustomFooter } from "@/componentes/CustomFooter/CustomFooter";
 import { CustomHeader } from "@/componentes/CustomHeader/CustomHeader";
 import { CustomMenuLateral } from "@/componentes/CustomMenuLateral/CustomMenuLateral";
 import { CustomNavBar } from "@/componentes/CustomNavBar/CustomNavBar";
 import { CustomNoticias } from "@/componentes/CustomNoticias/CustomNoticias";
-
 
 export default function Home() {
   const [menuAberto, setMenuAberto] = useState(false);
@@ -34,9 +32,6 @@ export default function Home() {
 
         {/* <!-- Acesso Rápido --> */}
         <CustomAcessoRapido />
-
-        {/* <!-- Filtro de Acessibilidade --> */}
-        <CustomFiltroDaltonismo />
 
         {/* <!-- Notícias --> */}
         <CustomNoticias />

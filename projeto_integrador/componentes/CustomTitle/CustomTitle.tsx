@@ -5,6 +5,7 @@ interface CustomTitleProps {
     title : string;
     id? : string;
     style? : React.CSSProperties;
+    className?: string;
 }
 
 export const CustomTitle = (props : CustomTitleProps) => {

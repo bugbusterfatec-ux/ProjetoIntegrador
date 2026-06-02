@@ -10,7 +10,7 @@ export const CustomNoticias = () => {
                 <div className="wrapper-noticias">
                     <article className="card-noticia card-grande">
                         <div className="img-wrapper">
-                            <img src="/caseSucesso.jpeg" alt="Adoção de sucesso" className="img-noticia" />
+                            <img src="/caseSucesso.png" alt="Adoção de sucesso" className="img-noticia" />
                         </div>
                         <div className="conteudo-noticia">
                             <h4 className="titulo-noticia">Mais uma adoção de sucesso</h4>
@@ -25,7 +25,7 @@ export const CustomNoticias = () => {
                         <article className="card-noticia card-pequeno card-passeio">
                             <div className="conteudo-wrapper">
                                 <div className="img-wrapper-passeio">
-                                    <img src="/diaDePasseio.jpg" alt="Dia de passeio" className="img-noticia-passeio" />
+                                    <img src="/diaDePasseio.png" alt="Dia de passeio" className="img-noticia-passeio" />
                                 </div>
                                 <div className="conteudo-noticia-passeio">
                                     <h4 className="titulo-noticia-passeio">Dia de passeio, carinho em forma de caminhada</h4>
@@ -39,7 +39,7 @@ export const CustomNoticias = () => {
                         <article className="card-noticia card-pequeno card-passeio">
                             <div className="conteudo-wrapper">
                                 <div className="img-wrapper-passeio">
-                                    <img src="/larTemporario.jpeg" alt="Lar temporário" className="img-noticia-passeio" />
+                                    <img src="/larTemporario.png" alt="Lar temporário" className="img-noticia-passeio" />
                                 </div>
                                 <div className="conteudo-noticia-passeio">
                                     <h4 className="titulo-noticia-passeio">Lar temporário, você também pode!</h4>
