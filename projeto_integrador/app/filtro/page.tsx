@@ -7,8 +7,9 @@ import { CustomAcessibilidade } from "@/componentes/CustomAcessibilidade/CustomA
 import { CustomMenuLateral } from "@/componentes/CustomMenuLateral/CustomMenuLateral";
 import { CustomNavBar } from "@/componentes/CustomNavBar/CustomNavBar";
 import { CustomFooter } from "@/componentes/CustomFooter/CustomFooter";
-import { CustomFiltroDaltonismo } from "@/componentes/CustomFiltroDaltonismo/CustomFiltroDaltonismo";
 import style from "./filtro.module.css"
+import { CustomSection } from "@/componentes/CustomSection/CustomSection";
+import { CustomButton } from "@/componentes/CustomButton/CustomButton";
 
 export default function FiltroPage() {
     const router = useRouter()
@@ -30,29 +31,29 @@ export default function FiltroPage() {
 
     const perguntas = [
         {
-            titulo: "Voce prefere:",
+            titulo: "Você prefere:",
             opcoes: [
                 { texto: "Cachorro", valor: "dog" },
                 { texto: "Gato", valor: "cat" },
             ],
         },
         {
-            titulo: "Qual porte voce prefere:",
+            titulo: "Qual porte você prefere:",
             opcoes: [
                 { texto: "Pequeno porte", valor: "pequeno" },
-                { texto: "Medio porte", valor: "medio" },
+                { texto: "Médio porte", valor: "medio" },
                 { texto: "Grande porte", valor: "grande" },
             ],
         },
         {
-            titulo: "Qual ambiente voce prefere:",
+            titulo: "Qual ambiente você prefere:",
             opcoes: [
                 { texto: "Apartamento", valor: "apartamento" },
                 { texto: "Casa com quintal", valor: "casa" },
             ],
         },
         {
-            titulo: "Quanto tempo voce tem para exercicios:",
+            titulo: "Quanto tempo você tem para exercícios:",
             opcoes: [
                 { texto: "Pouco tempo", valor: "pouco" },
                 { texto: "Tempo moderado", valor: "moderado" },
@@ -60,18 +61,18 @@ export default function FiltroPage() {
             ],
         },
         {
-            titulo: "Qual sua experiencia com pets:",
+            titulo: "Qual sua experiência com pets:",
             opcoes: [
                 { texto: "Iniciante", valor: "iniciante" },
-                { texto: "Intermediario", valor: "intermediario" },
+                { texto: "Intermediário", valor: "intermediario" },
                 { texto: "Experiente", valor: "experiente" },
             ],
         },
         {
-            titulo: "Voce prefere um pet:",
+            titulo: "Você prefere um pet:",
             opcoes: [
                 { texto: "Mais calmo e tranquilo", valor: "calmo" },
-                { texto: "Mais ativo e brincalhao", valor: "ativo" },
+                { texto: "Mais ativo e brincalhão", valor: "ativo" },
             ],
         },
     ]
@@ -136,7 +137,7 @@ export default function FiltroPage() {
     }, [casaAtual, pontosTrilha])
 
     useEffect(() => {
-        adicionarLog("Questionario carregado. Responda para encontrar seu companheiro ideal.")
+        adicionarLog("Questionário carregado. Responda para encontrar seu companheiro ideal.")
     }, [])
 
     const moverPorPassos = async (passos: number) => {
@@ -162,10 +163,10 @@ export default function FiltroPage() {
 
         if (indicePergunta === 0) {
             setAnimalJogador(respostaSelecionada === "cat" ? "cat" : "dog")
-            adicionarLog(respostaSelecionada === "cat" ? "Voce escolheu gato. O jogador agora e um gatinho." : "Voce escolheu cachorro.")
+            adicionarLog(respostaSelecionada === "cat" ? "Você escolheu gato. O jogador agora é um gatinho." : "Você escolheu cachorro.")
         }
 
-        adicionarLog("Resposta confirmada. Avancando 3 casas.")
+        adicionarLog("Resposta confirmada. Avançando 3 casas.")
         const novaCasa = await moverPorPassos(3)
 
         if (indicePergunta < perguntas.length - 1 && novaCasa < totalCasas - 1) {
@@ -181,7 +182,7 @@ export default function FiltroPage() {
             setFimQuiz(true)
             setMostrarModal(true)
             gerarConfetes()
-            adicionarLog("Parabens! Voce concluiu o caminho e esta pronto para adotar.")
+            adicionarLog("Parabéns! Você concluiu o caminho e está pronto para adotar.")
         }
 
         setRespostaSelecionada("")
@@ -202,20 +203,19 @@ export default function FiltroPage() {
             {/* <!-- Menu Lateral --> */}
             <CustomMenuLateral aberto={menuAberto} onCloseMenu={() => setMenuAberto(false)} />
 
-            {/* <!-- Filtro de Acessibilidade --> */}
-            <CustomFiltroDaltonismo />
-
+{/* Componentizar section e article */}
             <main className={style.paginaFiltro}>
-                <section className={style.cabecalhoTitulo}>
+                <CustomSection className={style.cabecalhoTitulo}>
                     <h1>SOBRE NOSSO CANIL</h1>
-                </section>
+                </CustomSection>
 
-                <section className={style.historiaSection}>
-                    <h2>NOSSA HISTORIA</h2>
-                    <div className={style.historiaTexto}>
-                        Nosso canil nasceu de uma necessidade da nossa cidade, onde nossos animais precisavam de cuidado e carinho.
+                <CustomSection className={style.historiaSection}>
+                    <h2>NOSSA HISTÓRIA</h2>
+                    <div className={style.historiaTexto} >
+                        O Departamento de Bem-Estar Animal (DPBEA) é o setor responsável por promover ações que garantem a proteção, cuidado e qualidade de vida dos animais do município de Votorantim. Dentro do projeto, o DPBEA ganha uma plataforma moderna e totalmente integrada ao sistema administrativo, permitindo mais transparência e eficiência na divulgação de cães e gatos disponíveis para adoção.
+                        Por meio dessa ferramenta, o departamento pode gerenciar em um só lugar todas as informações dos animais: fotos, vídeos, histórico, perfil social, vacinação, adestramento e status de adoção. Isso facilita o acompanhamento do processo, aumenta a visibilidade dos animais e aproxima o DPBEA da comunidade, fortalecendo a adoção responsável.
                     </div>
-                </section>
+                </CustomSection>
 
                 <section className={style.cardsAtividades}>
                     <article className={style.cardAtividade}>
@@ -223,12 +223,12 @@ export default function FiltroPage() {
                         <div className={style.cardConteudo}>
                             <img src="/bg_passeio.png" alt="Passeio com cachorro" />
                             <p>
-                                Se voce tem tempo sobrando? Que tal levar um AUmigo do Canil para passear?
-                                Basta voce escolher um AUmigo, fazer seu cadastro e aguardar um humano te mandar
-                                mensagem para diversao comecar.
+                                Se você tem tempo sobrando? Que tal levar um AUmigo do Canil para passear?
+                                Basta você escolher um AUmigo, fazer seu cadastro e aguardar um humano te mandar
+                                mensagem para a diversão começar.
                             </p>
                         </div>
-                        <button type="button" className={style.cardBotao} onClick={() => router.push('/sobrenos')}>PASSEAR</button>
+                        <CustomButton label="PASSEAR" className={style.cardBotao} onClick={() => router.push('/sobrenos')}></CustomButton>
                     </article>
 
                     <article className={style.cardAtividade}>
@@ -237,11 +237,11 @@ export default function FiltroPage() {
                             <img src="/bg_festaPijama.png" alt="Cachorro com pijama" />
                             <p>
                                 Eu e meus AUmigos amamos uma festa. Que tal comprar uns petiscos e assistir um filme
-                                de chorar abracada comigo, ou um filme de terror e eu te protejo? Escolha um AUmigo,
-                                se cadastre e um humano ira entrar em contato.
+                                de chorar abraçada comigo, ou um filme de terror e eu te protejo? Escolha um AUmigo,
+                                se cadastre e um humano irá entrar em contato.
                             </p>
                         </div>
-                        <button type="button" className={style.cardBotao} onClick={() => router.push('/sobrenos')}>FESTA DO PIJAMA</button>
+                        <CustomButton label="FESTA DO PIJAMA" className={style.cardBotao} onClick={() => router.push('/sobrenos')}></CustomButton>
                     </article>
                 </section>
 
@@ -249,11 +249,11 @@ export default function FiltroPage() {
                     <div>
                         <h3>PARA ADOTAR</h3>
                         <p>
-                            Para que voce encontre seu melhor amigo de primeira, fizemos um joguinho para voce preencher.
-                            Caso queira conhecer todos os animais do canil, so clicar ao lado.
+                            Para que você encontre seu melhor amigo de primeira, fizemos um joguinho para você preencher.
+                            Caso queira conhecer todos os animais do canil, só clicar ao lado.
                         </p>
                     </div>
-                    <button type="button" onClick={() => router.push('/meetinpet')}>CONHECER TODOS</button>
+                    <CustomButton label="CONHECER TODOS" className={style.ctaAdotarButton} onClick={() => { localStorage.removeItem("quizRespostas"); router.push('/meetinpet'); }}></CustomButton>
                 </section>
 
                 <section className={style.trilhaSection}>
@@ -331,14 +331,11 @@ export default function FiltroPage() {
                         </svg>
 
                         <article className={style.cartaoHistoriaTopo}>
-                            <img src="/DBEA.png" alt="Canil" />
-                            <p>Colocar um texto sobre o inicio do canil, data, contar um pouco da historia.</p>
+                            <img src="/SolLua.png" alt="mascotes" style={{width: "48%", height: "auto"}}/>
+                            <p>Olá, Muito prazer! Nós somos os mascotes do Departamento de Bem-Estar Animal, somos Sol e Lua. Responda as perguntas para sabermos se está apto a nos levar pra casa.</p>
                         </article>
 
-                        <article className={style.cartaoHistoriaBase}>
-                            <img src="/DBEA.png" alt="Canil" />
-                            <p>Colocar um texto sobre o inicio do canil, data, contar um pouco da historia.</p>
-                        </article>
+                        
 
                         <img src="/bg_casinhaPet.png" alt="Casinha de cachorro" className={style.casinhaFim} />
                     </div>
@@ -350,7 +347,11 @@ export default function FiltroPage() {
                             ))}
                         </div>
 
-                        <button type="button" className={style.gameConhecerBtn} onClick={() => router.push('/meetinpet')}>Conhecer os animais</button>
+                        <CustomButton 
+                            label="Conhecer os animais" 
+                            className={style.gameConhecerBtn} 
+                            onClick={() => { if (!fimQuiz) localStorage.removeItem("quizRespostas"); router.push('/meetinpet'); }}
+                        ></CustomButton>
                     </div>
                 </section>
             </main>
@@ -358,14 +359,16 @@ export default function FiltroPage() {
             <div className={`${style.congratulationsModal} ${mostrarModal ? style.showModal : ""}`}>
                 <div className={style.modalContent}>
                     <span className={style.modalEmoji}>🎉</span>
-                    Parabens! Voce esta preparado para adotar um amigo!
+                    Parabéns!
+                    < br />
+                    Você está preparado para adotar um amigo!
                     <button
                         type="button"
                         className={style.cardBotao}
                         style={{ marginTop: "1rem" }}
                         onClick={() => router.push("/meetinpet")}
                     >
-                        Ver meus resultados
+                        VER MEUS RESULTADOS
                     </button>
                 </div>
                 <div className={style.confettiContainer}>

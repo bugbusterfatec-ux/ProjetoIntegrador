@@ -11,10 +11,6 @@ import { CustomSection } from "@/componentes/CustomSection/CustomSection";
 import { ListaAnimais } from "@/componentes/ListaAnimais";
 
 
-
-
-
-
 export default function MeetinpetPage() {
     const [menuAberto, setMenuAberto] = useState(false)
 
@@ -41,7 +37,6 @@ export default function MeetinpetPage() {
                         <ListaAnimais />
                     </CustomSection>
                     
-
                     {/* <!-- Rodapé --> */}
                     <CustomFooter /> 
         </>

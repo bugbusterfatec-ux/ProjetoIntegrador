@@ -10,13 +10,13 @@
 }
 
 .verTodosBtn {
-  
+
   background-color: #FA7F08;
   color: #fff;
   font-size: 20px;
   border: none;
   padding: 10px 30px;
-  border-radius: 20px;
+  border-radius: 12px;
   width: 665px;
   height: 45px;
   font-weight: bold;
@@ -27,4 +27,20 @@
 
 .verTodosBtn:hover {
   background-color: #e06e00;
+}
+
+/* Button Limpar recomendações */
+
+.clearBtn {
+    background: none;
+    border: 1px solid #348888;
+    border-radius: 6px;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: #348888;
+}
+
+.clearBtn:hover {
+  background-color: #9ef8ee;
 }

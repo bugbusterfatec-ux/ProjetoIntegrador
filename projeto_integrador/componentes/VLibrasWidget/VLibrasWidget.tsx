@@ -1,25 +1,44 @@
 'use client'
+import Script from 'next/script'
 import { useEffect } from 'react'
 
 export const VLibrasWidget = () => {
     useEffect(() => {
-        if (document.getElementById('vlibras-plugin')) return
+        if (document.querySelector('[vw]')) return
 
-        const script = document.createElement('script')
-        script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js'
-        script.async = true
-        script.id = 'vlibras-plugin'
+        const container = document.createElement('div')
+        container.setAttribute('vw', '')
+        container.classList.add('enabled')
 
-        script.onload = () => {
-            new (window as any).VLibras.Widget('https://vlibras.gov.br/app')
-        }
+        const btn = document.createElement('div')
+        btn.setAttribute('vw-access-button', '')
+        btn.classList.add('active')
 
-        document.body.appendChild(script)
+        const wrap = document.createElement('div')
+        wrap.setAttribute('vw-plugin-wrapper', '')
+
+        const inner = document.createElement('div')
+        inner.className = 'vw-plugin-top-wrapper'
+
+        wrap.appendChild(inner)
+        container.appendChild(btn)
+        container.appendChild(wrap)
+        document.body.appendChild(container)
     }, [])
 
     return (
-        <div dangerouslySetInnerHTML={{
-            __html: '<div vw class="enabled"><div vw-access-button class="active"></div><div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div></div>'
-        }} />
+        <Script
+            src="https://vlibras.gov.br/app/vlibras-plugin.js"
+            strategy="afterInteractive"
+            onLoad={() => {
+                new (window as any).VLibras.Widget('https://vlibras.gov.br/app')
+                // Em SPAs o window.onload já disparou antes do script carregar.
+                // O VLibras depende desse evento para inicializar o widget,
+                // então precisamos dispará-lo manualmente.
+                if (typeof window.onload === 'function') {
+                    window.onload(new Event('load'))
+                }
+            }}
+        />
     )
 }
