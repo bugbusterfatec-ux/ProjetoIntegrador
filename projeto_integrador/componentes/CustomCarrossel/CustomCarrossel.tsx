@@ -36,22 +36,28 @@ export const CustomCarrossel = () => {
     return (
         <section className="carrossel-principal">
         <div ref={carouselRef} id="carrosselHero" className="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+            <div className="carousel-indicators">
+                <button type="button" data-bs-target="#carrosselHero" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carrosselHero" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            </div>
             <div className="carousel-inner">
                 <div className="carousel-item active">
                     <div className="slide slide-1">
                         <div className="conteudo-slide text-center text-white">
-                            <h2 className="display-4 fw-bold">+Vagas para a Castração Animal em Votorantim</h2>
-                            <p className="lead">3.600 oportunidades por ano</p>
-                            <p>{"arraste e entenda a importância da castração >>"}</p>
+                            <h2 className="display-5 fw-bold">+Vagas para a Castração Animal em Votorantim</h2>
+                            <p className="lead mb-1">3.600 oportunidades por ano</p>
+                            <p className="mb-0">Ajude a controlar a população de animais e promover saúde</p>
+                            <a href="#" className="btn-slide-cta">Saiba mais</a>
                         </div>
                     </div>
                 </div>
                 <div className="carousel-item">
                     <div className="slide slide-2">
                         <div className="conteudo-slide text-center text-white">
-                            <h2 className="display-4 fw-bold">GUARDA RESPONSÁVEL DE ANIMAIS DOMÉSTICOS</h2>
-                            <p className="lead">OBJETOS DE ANIMAIS EM VIAS PÚBLICAS</p>
-                            <p>Orientações para guarda responsável de animais domésticos</p>
+                            <h2 className="display-5 fw-bold">Guarda Responsável de Animais Domésticos</h2>
+                            <p className="lead mb-1">Orientações para tutores em Votorantim</p>
+                            <p className="mb-0">Cuide bem do seu pet e contribua com o bem-estar animal</p>
+                            <a href="#" className="btn-slide-cta">Ver orientações</a>
                         </div>
                     </div>
                 </div>

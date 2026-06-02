@@ -65,6 +65,8 @@ export const ListaAnimais = () => {
     const animais = listaInicial as Animal[]
 
     
+    const [textoBusca, setTextoBusca] = useState('')
+
     const [filtros, setFiltros] = useState({
         especie: "",
         sexo: "",
@@ -74,6 +76,12 @@ export const ListaAnimais = () => {
     })
 
     const [quizRespostas, setQuizRespostas] = useState<QuizRespostas | null>(null)
+
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search)
+        const busca = params.get('busca') ?? ''
+        setTextoBusca(busca)
+    }, [])
 
     useEffect(() => {
         const salvo = localStorage.getItem("quizRespostas")
@@ -122,8 +130,13 @@ export const ListaAnimais = () => {
 
 
     const animaisFiltrados = useMemo(() => {
+        const termo = textoBusca.toLowerCase()
         return animais.filter((animal) => {
+            const matchBusca = !termo ||
+                animal.nome.toLowerCase().includes(termo) ||
+                animal.raca.toLowerCase().includes(termo)
             return (
+                matchBusca &&
                 (!filtros.especie || animal.especie === filtros.especie) &&
                 (!filtros.sexo || animal.sexo === filtros.sexo) &&
                 (!filtros.porte || animal.porte === filtros.porte) &&
@@ -131,7 +144,7 @@ export const ListaAnimais = () => {
                 (!filtros.peso || animal.peso === filtros.peso)
             )
         })
-    }, [filtros, animais])
+    }, [filtros, animais, textoBusca])
 
     return (
         <>
@@ -172,6 +185,24 @@ export const ListaAnimais = () => {
                 
             )}
             
+            {/* INDICADOR DE BUSCA ATIVA */}
+            {textoBusca && (
+                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem", padding: "0.6rem 1rem", background: "#e8f7f7", borderRadius: "50px", border: "1px solid rgba(52,136,136,0.25)", width: "fit-content" }}>
+                    <span className="material-symbols-rounded" style={{ color: "#348888", fontSize: "1.1rem" }}>search</span>
+                    <span style={{ color: "#348888", fontWeight: 600, fontSize: "0.9rem" }}>
+                        Resultados para: <em>"{textoBusca}"</em>
+                    </span>
+                    <button
+                        type="button"
+                        onClick={() => setTextoBusca('')}
+                        style={{ background: "none", border: "none", color: "#348888", cursor: "pointer", padding: 0, display: "flex", alignItems: "center" }}
+                        aria-label="Limpar busca"
+                    >
+                        <span className="material-symbols-rounded" style={{ fontSize: "1.1rem" }}>close</span>
+                    </button>
+                </div>
+            )}
+
             {/* FILTROS MANUAIS */}
             <div style={{ display: "flex", gap: 10, marginBottom: 20 }}>
                 <CustomSelect

@@ -1,42 +1,57 @@
 'use client'
 
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+
 interface CustomHeaderProps {
-    extraLogo? : string;
-    textAlt? : string;
-    className? : string;
+    extraLogo?: string;
+    textAlt?: string;
+    className?: string;
 }
 
-export const CustomHeader = (props : CustomHeaderProps) => {
+export const CustomHeader = ({ extraLogo, textAlt, className }: CustomHeaderProps) => {
+    const router = useRouter()
+    const [termo, setTermo] = useState('')
 
-    const extraLogo = props.extraLogo;
-    const textAlt = props.textAlt;
-    const className = props.className;
+    const handleBusca = (e: React.FormEvent) => {
+        e.preventDefault()
+        const query = termo.trim()
+        router.push(query ? `/meetinpet?busca=${encodeURIComponent(query)}` : '/meetinpet')
+    }
 
     return (
         <header className="cabecalho">
-        <div className="container-fluid">
-            <div className="row align-items-center py-4">
-                <div className="col-md-3">
-                    <img src="/logo_Bem-estarAnimal.png" alt="Departamento do Bem-Estar Animal" className="logo" />
-                </div>
-                <div className="col-md-4">
-                    <div className="d-flex gap-2 align-items-center">
-                        <button className="btn btn-buscar" aria-label="Buscar">
-                            <span className="material-symbols-rounded">search</span>
-                        </button>
-                        <input type="text" className="form-control" placeholder="O que você procura?" />
+            <div className="cabecalho-acento" role="presentation" aria-hidden="true" />
+            <div className="container-fluid">
+                <div className="cabecalho-inner">
+                    <div className="cabecalho-logo-esq">
+                        <img src="/logo_Bem-EstarAnimal.png" alt="Departamento do Bem-Estar Animal" className="logo" />
+                    </div>
+
+                    <div className="cabecalho-busca">
+                        <form className="busca-form" onSubmit={handleBusca} role="search">
+                            <input
+                                type="search"
+                                className="busca-input"
+                                placeholder="O que você procura?"
+                                value={termo}
+                                onChange={(e) => setTermo(e.target.value)}
+                                aria-label="Buscar no site"
+                            />
+                            <button type="submit" className="busca-btn" aria-label="Buscar">
+                                <span className="material-symbols-rounded">search</span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div className="cabecalho-logo-dir">
+                        {extraLogo && (
+                            <img src={extraLogo} alt={textAlt} className={className} />
+                        )}
+                        <img src="/logo_prefeituraVotorantim.png" alt="Prefeitura Municipal de Votorantim" className="logo-prefeitura" />
                     </div>
                 </div>
-                
-                <div className="col-md-5 d-flex justify-content-end">
-                    {extraLogo && (
-                        <img src={extraLogo} alt={textAlt} className={className} />
-                    )}
-
-                    <img src="/logo_prefeituraVotorantim.png" alt="Prefeitura Municipal de Votorantim" className="logo-prefeitura" />
-                </div>
             </div>
-        </div>
-    </header>
+        </header>
     )
 }
