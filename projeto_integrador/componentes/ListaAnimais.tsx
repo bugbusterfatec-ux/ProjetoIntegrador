@@ -158,11 +158,11 @@ export const ListaAnimais = () => {
                     {animaisRecomendados.length === 0 ? (
                         null
                     ) : (
-                        <section className={style.cards}>
+                        <><section className={style.cards}>
                             {animaisRecomendados.map((animal, index) => (
                                 <CustomAnimalCard key={`rec-${index}`} {...animal} />
                             ))}
-                        </section>
+                        </section></>
                     )}
 
                     {<hr style={{ margin: "2rem 0" }} />}
