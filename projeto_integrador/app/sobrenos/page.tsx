@@ -83,8 +83,8 @@ export default function SobreNos() {
             {/* Menu Lateral */}
             <CustomMenuLateral aberto={menuAberto} onCloseMenu={() => setMenuAberto(false)} />
 
-            <main>
-                
+            <main className={style.paginaSobre}>
+
                 <CustomSection className={style.sobreContent}>
                     <div ref={pawTrailRef} id={style.pawTrail}></div>
                     
@@ -93,6 +93,7 @@ export default function SobreNos() {
                         imagem="/DBEA.png"
                         alt="foto do abrigo"
                         onClick={handleRedirect}
+                        showButton={false}
                         descricao={
                     <>
                         O Departamento de Bem-Estar Animal (DPBEA) é o setor responsável por promover ações
@@ -110,52 +111,43 @@ export default function SobreNos() {
                     }
                 />
 
-                <CustomSobreCard
-                    titulo="Como fazer uma festa de pijama com um Aumigo"
-                    imagem="/festadopijama.avif"
-                    alt="foto de uma pessoa com um aumigo assistindo filme"
-                    onClick={handleRedirect}
-                    descricao={
-                    <>
-                        A Festa do Pijama é uma ação especial que incentiva a adoção por meio da convivência.
-                        A proposta é que a pessoa possa levar um animal para passar uma noite em seu lar,
-                        vivendo um momento real de interação, carinho e companhia.
-                        <br />
-                        Com ajuda da plataforma, o DPBEA pode organizar e monitorar essa atividade de forma
-                        mais simples: cada animal tem um card completo com características, comportamento,
-                        perfil social e histórico, ajudando o participante a escolher um companheiro ideal
-                        para a experiência. Essa vivência permite ao adotante conhecer melhor o animal,
-                        avaliar sua adaptação ao ambiente e, muitas vezes, perceber que ali pode nascer uma
-                        nova família.<br />
-                    </>
-                    }
-                />
+                    <div className={style.activityRow}>
+                        <article className={style.activityCard}>
+                            <img src="/festadopijama.avif" alt="Pessoa com aumigo assistindo filme" className={style.activityImg} />
+                            <div className={style.activityContent}>
+                                <h2 className={style.activityTitle}>Festa do Pijama com um Aumigo</h2>
+                                <p className={style.activityText}>
+                                    A Festa do Pijama é uma ação especial que incentiva a adoção por meio da convivência.
+                                    A proposta é que a pessoa possa levar um animal para passar uma noite em seu lar,
+                                    vivendo um momento real de interação, carinho e companhia. Com ajuda da plataforma,
+                                    o DPBEA organiza e monitora essa atividade de forma simples, ajudando você a
+                                    escolher o companheiro ideal para a experiência.
+                                </p>
+                            </div>
+                        </article>
 
-                <CustomSobreCard
-                    titulo="Como levar um Aumigo para passear"
-                    imagem="/fotopasseio.jpg"
-                    alt="foto de uma pessoa levando um cachorro passear"
-                    onClick={handleRedirect}
-                    descricao={
-                    <>
-                        O programa &quot;Passear com o Animal&quot; é voltado para quem deseja contribuir,
-                        mas não pode adotar no momento. A iniciativa permite que qualquer pessoa cadastrada
-                        realize caminhadas e passeios com os animais, oferecendo estímulo físico,
-                        socialização e momentos de alegria.
-                        <br />
-                        A plataforma facilita esse processo ao apresentar cada animal com fotos, vídeos,
-                        comportamento e necessidades específicas. Assim, o usuário pode escolher um
-                        companheiro compatível com seu ritmo e disponibilidade. Além de melhorar a qualidade
-                        de vida dos animais, os passeios ajudam na preparação emocional deles para futuras
-                        adoções, tornando-os mais confiantes e sociáveis.
-                    </>
-                    }
-                />       
+                        <article className={style.activityCard}>
+                            <img src="/fotopasseio.jpg" alt="Pessoa levando cachorro para passear" className={style.activityImg} />
+                            <div className={style.activityContent}>
+                                <h2 className={style.activityTitle}>Passear com um Aumigo</h2>
+                                <p className={style.activityText}>
+                                    O programa &quot;Passear com o Animal&quot; é voltado para quem deseja contribuir,
+                                    mas não pode adotar no momento. A iniciativa permite que qualquer pessoa cadastrada
+                                    realize caminhadas e passeios com os animais, oferecendo estímulo físico,
+                                    socialização e momentos de alegria para todos.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div className={style.ctaFinal}>
+                        <button className={style.ctaFinalBtn} onClick={handleRedirect}>
+                            Conhecer os animais
+                        </button>
+                    </div>
 
                 </CustomSection>
-                
-                <br />
-                <br />
+
             </main>
 
             {/* Rodapé */}

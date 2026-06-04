@@ -1,16 +1,22 @@
+.paginaSobre {
+  width: 90%;
+  max-width: 1800px;
+  margin: 28px auto 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  font-family: "Outfit", "Courier New", Courier, monospace;
+}
+
 .sobreContent {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: flex-start;
-  align-items: center;
-  color: #fff;
-  background-color: #348888;
-  border-radius: 20px;
-  width: 90%;
-  gap: 25px;
-  margin: 20px auto;
+  align-items: stretch;
+  color: #2d2d2d;
+  background: linear-gradient(135deg, #e6f7f7 0%, #f2fdfd 100%);
+  border: 2px solid rgba(52, 136, 136, 0.22);
+  border-radius: 26px;
+  gap: 40px;
   padding: 40px;
   position: relative;
   overflow: hidden;
@@ -36,6 +42,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   animation: pawWalk 2.5s ease forwards;
+  filter: blur(0.8px) brightness(0%);
 }
 
 @keyframes pawWalk {
@@ -44,10 +51,10 @@
     transform: translateY(20px) scale(0.5) rotate(-20deg);
   }
   20% {
-    opacity: 1;
+    opacity: 0.1;
   }
   80% {
-    opacity: 1;
+    opacity: 0.1;
     transform: translateY(-20px) scale(1) rotate(0deg);
   }
   100% {
@@ -56,10 +63,143 @@
   }
 }
 
+/* ── Activity cards row ── */
+.activityRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  width: 100%;
+}
+
+.activityCard {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.activityCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(52, 136, 136, 0.18);
+}
+
+.activityImg {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.activityContent {
+  padding: 24px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.activityTitle {
+  color: var(--cor-verde-agua);
+  font-size: clamp(1rem, 1.3vw, 1.3rem);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+  padding-bottom: 0.75rem;
+  margin: 0 0 16px 0;
+}
+
+.activityTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--cor-laranja);
+  border-radius: 2px;
+}
+
+.activityText {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  flex: 1;
+  margin: 0 0 24px;
+}
+
+.activityBtn {
+  align-self: center;
+  background: var(--cor-laranja);
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 36px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  font-family: "Outfit", "Courier New", Courier, monospace;
+  box-shadow: 0 4px 12px rgba(250, 127, 8, 0.28);
+}
+
+.activityBtn:hover {
+  background: #e06e00;
+  transform: translateY(-2px);
+}
+
+/* ── CTA único no final ── */
+.ctaFinal {
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+.ctaFinalBtn {
+  background: var(--cor-laranja);
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  padding: 16px 56px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  font-family: "Outfit", "Courier New", Courier, monospace;
+  box-shadow: 0 6px 20px rgba(250, 127, 8, 0.35);
+}
+
+.ctaFinalBtn:hover {
+  background: #e06e00;
+  transform: translateY(-2px);
+}
+
+/* ── Responsive ── */
 @media (max-width: 768px) {
-  .sobreContent {
+  .paginaSobre {
     width: 95%;
+    margin-top: 18px;
+    gap: 20px;
+  }
+
+  .sobreContent {
     padding: 20px;
-    gap: 15px;
+    gap: 20px;
+    border-radius: 18px;
+  }
+
+  .activityRow {
+    grid-template-columns: 1fr;
+  }
+
+  .activityImg {
+    height: 190px;
   }
 }
