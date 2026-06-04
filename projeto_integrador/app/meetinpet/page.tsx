@@ -9,6 +9,7 @@ import { CustomFooter } from "@/componentes/CustomFooter/CustomFooter";
 import { CustomTitle } from "@/componentes/CustomTitle/CustomTitle";
 import { CustomSection } from "@/componentes/CustomSection/CustomSection";
 import { ListaAnimais } from "@/componentes/ListaAnimais";
+import style from "./page.module.css";
 
 
 export default function MeetinpetPage() {
@@ -29,16 +30,18 @@ export default function MeetinpetPage() {
                     {/* <!-- Menu Lateral --> */}
                     <CustomMenuLateral aberto={menuAberto} onCloseMenu={() => setMenuAberto(false)} />
 
-                    {/* <!-- Titulo --> */}
-                    <CustomTitle title="ANIMAIS PARA ADOÇÃO"></CustomTitle>
-                    
-                    {/* <!-- Filtro --> */}
-                    <CustomSection>
-                        <ListaAnimais />
-                    </CustomSection>
-                    
+                    <main className={style.paginaMeetin}>
+                        {/* <!-- Titulo --> */}
+                        <CustomTitle title="ANIMAIS PARA ADOÇÃO" />
+
+                        {/* <!-- Lista e filtros --> */}
+                        <CustomSection>
+                            <ListaAnimais />
+                        </CustomSection>
+                    </main>
+
                     {/* <!-- Rodapé --> */}
-                    <CustomFooter /> 
+                    <CustomFooter />
         </>
     )
 }
