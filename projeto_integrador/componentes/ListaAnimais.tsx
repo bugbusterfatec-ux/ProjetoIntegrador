@@ -154,7 +154,7 @@ export const ListaAnimais = () => {
             {quizRespostas && (
                 <>
                     <div style={{ display: "flex", flexDirection:"column", alignItems: "center", gap: "1rem", marginBottom: "1rem" }}>
-                        <h2 style={{ margin: 0, color:"#348888" }}>Principais recomendações para você 🐾</h2>
+                        <h2 className="titulo-secao text-center">Principais recomendações para você 🐾</h2>
 
                         <CustomAlert message={alert?.message} show={alert?.show} variant={alert?.variant} />
 
