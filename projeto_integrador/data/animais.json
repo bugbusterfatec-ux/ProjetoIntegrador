@@ -24,11 +24,10 @@
     "microchipado": true,
     "alergico": false,
     "fotos": [
-      { "idFoto": 1, "urlFoto": "/kairi.jpg" },
-      { "idFoto": 2, "urlFoto": "/kairi.jpg" },
-      { "idFoto": 3, "urlFoto": "/kairi.jpg" },
-      { "idFoto": 4, "urlFoto": "/kairi.jpg" },
-      { "idFoto": 5, "urlFoto": "/kairi.jpg" }
+      { "idFoto": 2, "urlFoto": "/kairi5.png" },
+      { "idFoto": 3, "urlFoto": "/kairi2.png" },
+      { "idFoto": 4, "urlFoto": "/kairi3.png" },
+      { "idFoto": 5, "urlFoto": "/kairi4.png" }
     ],
     "vacinas": [
       {

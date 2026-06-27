@@ -330,8 +330,9 @@ export default function FiltroPage() {
                             />
                         </svg>
 
+                        <img src="/SolLua.png" alt="mascotes Sol e Lua" className={style.mascoteImagem} />
+
                         <article className={style.cartaoHistoriaTopo}>
-                            <img src="/SolLua.png" alt="mascotes" style={{width: "48%", height: "auto"}}/>
                             <p>Olá, Muito prazer! Nós somos os mascotes do Departamento de Bem-Estar Animal, somos Sol e Lua. Responda as perguntas para sabermos se está apto a nos levar pra casa.</p>
                         </article>
 

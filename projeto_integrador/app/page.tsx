@@ -4,6 +4,7 @@ import { useState } from "react";
 import { CustomAcessibilidade } from "@/componentes/CustomAcessibilidade/CustomAcessibilidade";
 import { CustomAcessoRapido } from "@/componentes/CustomAcessoRapido/CustomAcessoRapido";
 import { CustomCarrossel } from "@/componentes/CustomCarrossel/CustomCarrossel";
+import { CustomChamadaProjeto } from "@/componentes/CustomChamadaProjeto/CustomChamadaProjeto";
 import { CustomFooter } from "@/componentes/CustomFooter/CustomFooter";
 import { CustomHeader } from "@/componentes/CustomHeader/CustomHeader";
 import { CustomMenuLateral } from "@/componentes/CustomMenuLateral/CustomMenuLateral";
@@ -26,6 +27,9 @@ export default function Home() {
 
         {/* <!-- Menu Lateral --> */}
         <CustomMenuLateral aberto={menuAberto} onCloseMenu={() => setMenuAberto(false)} />
+
+        {/* <!-- Chamada para o projeto Bem-Estar --> */}
+        <CustomChamadaProjeto />
 
         {/* <!-- Carrossel Principal --> */}
         <CustomCarrossel />

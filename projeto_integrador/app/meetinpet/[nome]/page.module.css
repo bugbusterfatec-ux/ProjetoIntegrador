@@ -15,26 +15,22 @@
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    padding: 8px 16px;
-    border-radius: 8px;
-    transition: background-color 0.2s;
+    padding: 8px 4px;
+    border-radius: 0;
+    transition: opacity 0.2s;
 }
 
 .backButton:hover {
-    background-color: #f0f9f9;
+    opacity: 0.7;
 }
 
-.titleDetails h1 {
-    color: #348888;
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 0;
-}
+/* h1 handled by CustomTitle component */
 
-/* ── Teal band (same as .cards in listing) ── */
+/* ── Main content wrapper ── */
 .detailsMain {
-    background-color: #348888;
-    border-radius: 20px;
+    background: linear-gradient(135deg, #e6f7f7 0%, #f2fdfd 100%);
+    border: 2px solid rgba(52, 136, 136, 0.22);
+    border-radius: 26px;
     width: 90%;
     margin: 0 auto 60px;
     padding: 40px;
@@ -236,7 +232,7 @@
     padding: 14px 32px;
     background-color: #FA7F08;
     border: none;
-    border-radius: 8px;
+    border-radius: 50px;
     color: #fff;
     font-weight: 700;
     font-size: 15px;
@@ -258,16 +254,17 @@
     width: 340px;
     height: 50px;
     text-align: center;
-    margin: 40px 20px;
+    margin: 40px auto;
     padding: 12px;
     background-color: #FA7F08;
     border: none;
-    border-radius: 20px;
+    border-radius: 50px;
     color: #fff;
     font-weight: bold;
     font-size: 1em;
     cursor: pointer;
     transition: background 0.2s ease;
+    display: block;
 }
 
 .btnConhecer:hover {
@@ -293,6 +290,7 @@
     .detailsMain {
         width: 95%;
         padding: 24px;
+        border-radius: 18px;
     }
 
     .detailsContainer {

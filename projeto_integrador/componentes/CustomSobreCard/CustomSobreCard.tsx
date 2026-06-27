@@ -8,6 +8,7 @@ interface CustomSobreCardProps {
   alt?: string;
   descricao?: ReactNode;
   onClick?: () => void;
+  showButton?: boolean;
 }
 
 export const CustomSobreCard = ({
@@ -16,6 +17,7 @@ export const CustomSobreCard = ({
     alt,
     descricao,
     onClick,
+    showButton = true,
 }: CustomSobreCardProps) => {
 
     const [isVisible, setIsVisible] = useState(false);
@@ -44,33 +46,34 @@ export const CustomSobreCard = ({
             ref={cardRef}
             className={`${style.sobre} ${isVisible ? style.appear : ""}`}
             >
-            <h1 className={style.sobreContentH1}>{titulo}</h1>
-            <br />
+            <h2 className={style.sobreContentH1}>{titulo}</h2>
 
-            {/* 1ª Camada: Cuida do deslize no Scroll */}
-            <div className={style.imageScrollContainer}>
-                {/* 2ª Camada: Cuida da flutuação infinita */}
-                <div className={style.imageFloatContainer}>
-                {/* Elemento final: Cuida do Hover */}
-                <img
-                    src={imagem}
-                    alt={alt}
-                    className={`${style.blob} ${style.sobreContentImg}`}
-                />
+            <div className={style.contentWrapper}>
+                {/* 1ª Camada: Cuida do deslize no Scroll */}
+                <div className={style.imageScrollContainer}>
+                    {/* 2ª Camada: Cuida da flutuação infinita */}
+                    <div className={style.imageFloatContainer}>
+                        {/* Elemento final: Cuida do Hover */}
+                        <img
+                            src={imagem}
+                            alt={alt}
+                            className={`${style.blob} ${style.sobreContentImg}`}
+                        />
+                    </div>
                 </div>
-            </div>
-            <br />
 
-            <div className={style.sobreContentP}>
-                {descricao}
+                <div className={style.sobreContentP}>
+                    {descricao}
 
-                {/* Camada que flutua o botão separadamente */}
-                <div className={style.btnFloatContainer}>
-                <CustomButton
-                    label="Conhecer os animais"
-                    className={style.btnConhecer}
-                    onClick={onClick}
-                />
+                    {showButton && (
+                        <div className={style.btnFloatContainer}>
+                            <CustomButton
+                                label="Conhecer os animais"
+                                className={style.btnConhecer}
+                                onClick={onClick}
+                            />
+                        </div>
+                    )}
                 </div>
             </div>
     </article>

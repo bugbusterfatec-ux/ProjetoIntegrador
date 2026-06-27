@@ -1,24 +1,37 @@
 
-/* FILTRO */
-	.title {
+.title {
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     width: 90%;
     margin: 0 auto;
-    padding: 20px 40px 20px 0;
-    margin-bottom: 0;
+    padding: 28px 0 24px;
     box-sizing: border-box;
-	}
+}
 
-	.titleH1 {
-    color: #348888;
+.titleH1 {
+    color: var(--cor-verde-agua);
     font-size: 1.8rem;
-    font-weight: 600;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     margin: 0;
-    text-align: right;
-    padding: 0;
-	}
+    text-align: center;
+    padding-bottom: 0.75rem;
+    position: relative;
+}
+
+.titleH1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: var(--cor-laranja);
+    border-radius: 2px;
+}
 
     /* Container Cards Atividades (Passeio e Festa do Pijama) */
 .cards-atividades-container {
