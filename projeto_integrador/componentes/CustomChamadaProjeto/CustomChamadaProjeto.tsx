@@ -5,7 +5,10 @@ export const CustomChamadaProjeto = () => {
         <section className={style.chamadaProjeto}>
             <div className={style.chamadaConteudo}>
                 <div className={style.textGroup}>
-                    <span className={style.label}>Em desenvolvimento</span>
+                    <span className={style.label}>
+                        <span className={style.labelIcon} aria-hidden="true">🚀</span>
+                        EM DESENVOLVIMENTO
+                    </span>
                     <h2>Projeto Bem-Estar Animal</h2>
                     <p className={style.subtitle}>
                         <strong>Uma parceria entre a Fatec Votorantim e a Prefeitura de Votorantim para modernizar a gestão do bem-estar animal do município.</strong>
