@@ -129,27 +129,27 @@ export default function Projeto() {
                 <div className={style.printsGrid}>
                   <div className={style.printCard}>
                     <a
-                      href="/bg_sem_imagem.webp"
+                      href="/pg_cad_donatario_doador.jpeg"
                       data-fancybox="projeto"
-                      data-caption="Controle de doações"
+                      data-caption="Cadastro Donatário | Doador"
                       className={style.imageButton}
                       title="Clique para ampliar"
                     >
-                      <img src="/bg_sem_imagem.webp" alt="Tela de controle de doações" />
+                      <img src="/pg_cad_donatario_doador.jpeg" alt="Tela de cadastro Donatário ou Doador" />
                     </a>
-                    <span>Controle de doações</span>
+                    <span>Cadastro Donatário | Doador</span>
                   </div>
                   <div className={style.printCard}>
                     <a
-                      href="/bg_sem_imagem.webp"
+                      href="/pg_consulta_estoque.jpeg"
                       data-fancybox="projeto"
-                      data-caption="Estoque e beneficiários"
+                      data-caption="Consulta de Estoque"
                       className={style.imageButton}
                       title="Clique para ampliar"
                     >
-                      <img src="/bg_sem_imagem.webp" alt="Tela de estoque de ração" />
+                      <img src="/pg_consulta_estoque.jpeg" alt="Tela de consulta de estoque" />
                     </a>
-                    <span>Estoque e beneficiários</span>
+                    <span>Tela de Consulta de Estoque</span>
                   </div>
                 </div>
               </article>
@@ -197,25 +197,25 @@ export default function Projeto() {
                 <div className={style.printsGrid}>
                   <div className={style.printCard}>
                     <a
-                      href="/bg_sem_imagem.webp"
+                      href="/pg_cadastro_animal.jpeg"
                       data-fancybox="projeto"
                       data-caption="Cadastro de animais"
                       className={style.imageButton}
                       title="Clique para ampliar"
                     >
-                      <img src="/bg_sem_imagem.webp" alt="Tela de cadastro de animais" />
+                      <img src="/pg_cadastro_animal.jpeg" alt="Tela de cadastro de animais" />
                     </a>
                     <span>Cadastro de animais</span>
                   </div>
                   <div className={style.printCard}>
                     <a
-                      href="/bg_sem_imagem.webp"
+                      href="/pg_acompanhamento_animal.jpg"
                       data-fancybox="projeto"
                       data-caption="Acompanhamento do animal"
                       className={style.imageButton}
                       title="Clique para ampliar"
                     >
-                      <img src="/bg_sem_imagem.webp" alt="Tela de acompanhamento de animais" />
+                      <img src="/pg_acompanhamento_animal.jpg" alt="Tela de acompanhamento de animais" />
                     </a>
                     <span>Acompanhamento do animal</span>
                   </div>
@@ -231,25 +231,25 @@ export default function Projeto() {
                 <div className={style.printsGrid}>
                   <div className={style.printCard}>
                     <a
-                      href="/bg_sem_imagem.webp"
+                      href="/pg_perdi_meu_pet.jpeg"
                       data-fancybox="projeto"
-                      data-caption="Resgate registrado"
+                      data-caption="Cadastro de resgates ou perda"
                       className={style.imageButton}
                       title="Clique para ampliar"
                     >
-                      <img src="/bg_sem_imagem.webp" alt="Tela de registro de resgates" />
+                      <img src="/pg_perdi_meu_pet.jpeg" alt="Tela de registro de resgates ou perda" />
                     </a>
-                    <span>Resgate registrado</span>
+                    <span>Cadastro de resgates ou perda</span>
                   </div>
                   <div className={style.printCard}>
                     <a
-                      href="/bg_sem_imagem.webp"
+                      href="/pg_mapa_interativo.jpeg"
                       data-fancybox="projeto"
                       data-caption="Mapa de achados/perdidos"
                       className={style.imageButton}
                       title="Clique para ampliar"
                     >
-                      <img src="/bg_sem_imagem.webp" alt="Tela de mapa de animais perdidos" />
+                      <img src="/pg_mapa_interativo.jpeg" alt="Tela de mapa de animais perdidos" />
                     </a>
                     <span>Mapa de achados/perdidos</span>
                   </div>
