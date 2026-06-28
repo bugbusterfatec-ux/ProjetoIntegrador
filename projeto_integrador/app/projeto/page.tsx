@@ -85,6 +85,40 @@ export default function Projeto() {
               Cada módulo abaixo descreve o escopo do trabalho e tem espaço para dois prints de tela. O card de adoção usa imagens mais representativas para o público.
             </p>
             <div className={style.modulosGrid}>
+            <article className={style.moduloCard}>
+                <div className={style.moduloHeader}>
+                  <h3>Adoção Responsável</h3>
+                  <p>
+                    Módulo voltado à divulgação de cães e gatos disponíveis para adoção. A plataforma apresentará os animais em cards informativos, com foto, características, porte, idade, comportamento, situação vacinal e demais dados relevantes. Também serão previstos filtros para aproximar os adotantes dos animais mais compatíveis com seu perfil.
+                  </p>
+                </div>
+                <div className={style.printsGrid}>
+                  <div className={style.printCard}>
+                    <a
+                      href="/pg_home.jpg"
+                      data-fancybox="projeto"
+                      data-caption="Home de adoção"
+                      className={style.imageButton}
+                      title="Clique para ampliar"
+                    >
+                      <img src="/pg_home.jpg" alt="Tela inicial de adoção" />
+                    </a>
+                    <span>Home de adoção</span>
+                  </div>
+                  <div className={style.printCard}>
+                    <a
+                      href="/pg_adocao.jpg"
+                      data-fancybox="projeto"
+                      data-caption="Ficha do animal"
+                      className={style.imageButton}
+                      title="Clique para ampliar"
+                    >
+                      <img src="/pg_adocao.jpg" alt="Tela de perfil do animal para adoção" />
+                    </a>
+                    <span>Quiz Interativo</span>
+                  </div>
+                </div>
+              </article>
               <article className={style.moduloCard}>
                 <div className={style.moduloHeader}>
                   <h3>Banco de Ração Solidária</h3>
@@ -184,40 +218,6 @@ export default function Projeto() {
                       <img src="/bg_sem_imagem.webp" alt="Tela de acompanhamento de animais" />
                     </a>
                     <span>Acompanhamento do animal</span>
-                  </div>
-                </div>
-              </article>
-              <article className={style.moduloCard}>
-                <div className={style.moduloHeader}>
-                  <h3>Adoção Responsável</h3>
-                  <p>
-                    Módulo voltado à divulgação de cães e gatos disponíveis para adoção. A plataforma apresentará os animais em cards informativos, com foto, características, porte, idade, comportamento, situação vacinal e demais dados relevantes. Também serão previstos filtros para aproximar os adotantes dos animais mais compatíveis com seu perfil.
-                  </p>
-                </div>
-                <div className={style.printsGrid}>
-                  <div className={style.printCard}>
-                    <a
-                      href="/pg_home.jpg"
-                      data-fancybox="projeto"
-                      data-caption="Home de adoção"
-                      className={style.imageButton}
-                      title="Clique para ampliar"
-                    >
-                      <img src="/pg_home.jpg" alt="Tela inicial de adoção" />
-                    </a>
-                    <span>Home de adoção</span>
-                  </div>
-                  <div className={style.printCard}>
-                    <a
-                      href="/pg_adocao.jpg"
-                      data-fancybox="projeto"
-                      data-caption="Ficha do animal"
-                      className={style.imageButton}
-                      title="Clique para ampliar"
-                    >
-                      <img src="/pg_adocao.jpg" alt="Tela de perfil do animal para adoção" />
-                    </a>
-                    <span>Quiz Interativo</span>
                   </div>
                 </div>
               </article>

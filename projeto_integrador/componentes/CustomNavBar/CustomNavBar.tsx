@@ -26,10 +26,10 @@ export const CustomNavBar = ({ isMenuOpen, onOpenMenu }: CustomNavBarProps) => {
                     </button>
                     <div className="barra-nav">
                         <a href="/" className="link-nav">Home</a>
-                        <a href="/projeto" className="link-nav">Sobre o Projeto</a>
-                        <a href="/filtro" className="link-nav">Adote</a>
+                        <a href="/filtro" className="link-nav">Adoção Responsável</a>
                         <a href="#" className="link-nav">Banco de Ração</a>
                         <a href="#" className="link-nav">Castração</a>
+                        <a href="/projeto" className="link-nav">Sobre o Projeto</a>
                         <a href="#" className="link-nav">Entrar</a>
                     </div>
                 </div>

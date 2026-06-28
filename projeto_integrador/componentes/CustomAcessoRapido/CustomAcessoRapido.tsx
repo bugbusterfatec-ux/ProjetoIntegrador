@@ -7,6 +7,15 @@ export const CustomAcessoRapido = () => {
         <div className="container">
             <h3 className="titulo-secao text-center mb-5">ACESSO RÁPIDO</h3>
             <div className="d-flex flex-wrap justify-content-center gap-4 mb-4">
+                <a href="/filtro" className="card-acesso">
+                    <div className="icone-acesso">
+                        <span className="material-symbols-rounded">family_home</span>
+                    </div>
+                    <div>
+                        <h4 className="text-center">ADOTE</h4>
+                        <p className="card-acesso-descricao">Encontre seu pet ideal</p>
+                    </div>
+                </a>
                 <a href="#" className="card-acesso">
                     <div className="icone-acesso">
                         <span className="material-symbols-rounded">real_estate_agent</span>
@@ -23,15 +32,6 @@ export const CustomAcessoRapido = () => {
                     <div>
                         <h4 className="text-center">BANCO<br/>DE RAÇÃO</h4>
                         <p className="card-acesso-descricao">Solicite ou doe ração</p>
-                    </div>
-                </a>
-                <a href="/filtro" className="card-acesso">
-                    <div className="icone-acesso">
-                        <span className="material-symbols-rounded">family_home</span>
-                    </div>
-                    <div>
-                        <h4 className="text-center">ADOTE</h4>
-                        <p className="card-acesso-descricao">Encontre seu pet ideal</p>
                     </div>
                 </a>
                 <a href="#" className="card-acesso">
